@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trash2, Clock, Calculator, Home, Calendar as CalendarIcon, Upload } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import GlassCard from '@/components/ui/GlassCard';
-import Button from '@/components/ui/Button';
 import { formatCurrency } from '@/lib/formatters';
 import { ICalculation } from '@/models/Calculation';
 import { format } from 'date-fns';
@@ -19,7 +18,7 @@ export default function SavedCalculations() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
-  const fetchCalculations = async () => {
+  const fetchCalculations = useCallback(async () => {
     if (!session?.user?.id) return;
 
     try {
@@ -33,7 +32,7 @@ export default function SavedCalculations() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [session?.user?.id]);
 
   const handleDelete = async (id: string) => {
     setDeletingId(id);
@@ -57,7 +56,7 @@ export default function SavedCalculations() {
     setLoadingId(calc._id.toString());
     
     // Load the calculation into the store
-    loadCalculation(calc.type as any, calc.inputs, calc.currency);
+    loadCalculation(calc.type as 'mortgage' | 'rent' | 'prorated_rent', calc.inputs, calc.currency);
     
     // Scroll to top to show the calculator
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -73,7 +72,7 @@ export default function SavedCalculations() {
       setCalculations([]);
       setIsLoading(false);
     }
-  }, [session, refreshTrigger]); // Re-fetch when refreshTrigger changes
+  }, [session, refreshTrigger, fetchCalculations]); // Re-fetch when refreshTrigger changes
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -216,7 +215,7 @@ export default function SavedCalculations() {
                           Monthly Payment
                         </p>
                         <p className="text-lg font-bold" style={{ color: 'var(--color-accent-cyan)' }}>
-                          {formatCurrency(calc.results.monthlyPayment, calc.currency, true)}
+                          {formatCurrency((calc.results.monthlyPayment as number) || 0, calc.currency, true)}
                         </p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
@@ -246,7 +245,7 @@ export default function SavedCalculations() {
                         Monthly Rent
                       </p>
                       <p className="text-lg font-bold" style={{ color: 'var(--color-accent-cyan)' }}>
-                        {formatCurrency(calc.results.monthlyRent, calc.currency, true)}
+                        {formatCurrency((calc.results.monthlyRent as number) || 0, calc.currency, true)}
                       </p>
                     </div>
                   )}
@@ -257,7 +256,7 @@ export default function SavedCalculations() {
                         Prorated Amount
                       </p>
                       <p className="text-lg font-bold" style={{ color: 'var(--color-accent-cyan)' }}>
-                        {formatCurrency(calc.results.proratedRent, calc.currency, true)}
+                        {formatCurrency((calc.results.proratedRent as number) || 0, calc.currency, true)}
                       </p>
                     </div>
                   )}

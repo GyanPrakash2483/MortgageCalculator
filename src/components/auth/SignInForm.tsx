@@ -34,7 +34,7 @@ export default function SignInForm() {
         router.push('/');
         router.refresh();
       }
-    } catch (err: any) {
+    } catch {
       setError('An error occurred. Please try again.');
     } finally {
       setIsLoading(false);

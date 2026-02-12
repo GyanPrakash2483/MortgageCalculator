@@ -88,7 +88,7 @@ export const authConfig: NextAuthConfig = {
       }
       return true;
     },
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       // Always fetch MongoDB user ID on first sign-in
       if (user?.email) {
         await dbConnect();

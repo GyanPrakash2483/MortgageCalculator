@@ -42,10 +42,10 @@ export async function POST(req: NextRequest) {
       { message: 'Calculation saved successfully', id: calculation._id },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error('Save calculation error:', error);
     return NextResponse.json(
-      { error: 'Failed to save calculation', details: error.message },
+      { error: 'Failed to save calculation' },
       { status: 500 }
     );
   }

@@ -47,7 +47,7 @@ export default function RentCalculator() {
       } else {
         setSaveMessage('✗ Failed to save calculation');
       }
-    } catch (error) {
+    } catch {
       setSaveMessage('✗ Error saving calculation');
     } finally {
       setIsSaving(false);

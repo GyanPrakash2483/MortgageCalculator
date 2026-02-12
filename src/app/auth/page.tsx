@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, Home, ArrowLeft } from 'lucide-react';
+import { Home, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GlassCard from '@/components/ui/GlassCard';
 import SignInForm from '@/components/auth/SignInForm';
@@ -16,19 +16,8 @@ export default function AuthPage() {
   return (
     <div
       className="min-h-screen flex items-center justify-center p-4 relative"
-      style={{ background: 'var(--color-bg-primary)', zIndex: 2 }}
+      style={{ zIndex: 2 }}
     >
-      {/* Animated background gradient */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div
-          className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20 blur-3xl"
-          style={{ background: 'var(--color-accent-cyan)' }}
-        />
-        <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full opacity-20 blur-3xl"
-          style={{ background: 'var(--color-accent-blue)' }}
-        />
-      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -1,10 +1,10 @@
-# 🏡 Mortgage Calculator Platform
+# Mortgage Calculator Platform
 
 A comprehensive, production-ready financial planning platform with private user dashboard, dual-currency support, and advanced mortgage calculations.
 
-## ✨ Features
+## Features
 
-### 🔐 Authentication (Optional)
+### Authentication (Optional)
 - **Public Access**: All calculators work without login
 - **Sign-in Required Only For**: Saving and managing calculation history
 - **NextAuth v5** with dual provider support:
@@ -13,7 +13,7 @@ A comprehensive, production-ready financial planning platform with private user 
 - Email verification using Nodemailer with Gmail SMTP
 - Smart authentication flow - prompts only when needed
 
-### 💰 Financial Calculators
+### Financial Calculators
 
 #### 1. Mortgage Calculator
 - Complete EMI calculation using standard amortization formula
@@ -35,19 +35,19 @@ A comprehensive, production-ready financial planning platform with private user 
 - Move-in date selection
 - Daily rate calculation
 
-### 🌍 Dual-Currency System
+### Dual-Currency System
 - **USD ($)** and **INR (₹)** support
 - Global currency toggle
 - INR formatting using Indian numbering system (Lakhs/Crores)
   - Example: ₹1,00,000 (1 Lakh), ₹1 Cr (1 Crore)
 
-### 📊 Data Visualization
+### Data Visualization
 - **Recharts** integration for interactive charts
 - Donut charts for composition analysis
 - Area charts for time-series data
 - Responsive and animated charts
 
-### 💾 Private User Dashboard
+### Private User Dashboard
 - MongoDB-backed data persistence
 - One-to-many relationship: User → Calculations
 - Save calculations with one click
@@ -55,7 +55,7 @@ A comprehensive, production-ready financial planning platform with private user 
 - Delete saved calculations
 - All data is private and user-specific
 
-### 🎨 UI/UX Design
+### UI/UX Design
 - **Modern Fintech Luxury** dark theme
 - Glassmorphism effects with backdrop blur
 - Cyan/Blue gradient accents (#06b6d4 → #3b82f6)
@@ -64,7 +64,7 @@ A comprehensive, production-ready financial planning platform with private user 
 - Fully responsive (mobile-first)
 - Real-time chart updates on input changes
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
@@ -79,7 +79,7 @@ A comprehensive, production-ready financial planning platform with private user 
 - **Validation**: Zod
 - **Date Utilities**: date-fns
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -135,7 +135,7 @@ src/
     └── next-auth.d.ts                    # NextAuth type extensions
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 20+ installed
@@ -162,10 +162,10 @@ src/
    ```
 
 4. **Open [http://localhost:3000](http://localhost:3000)**
-   - 🎉 **No login required!** Start calculating immediately
+   - **No login required!** Start calculating immediately
    - Sign in only if you want to save your calculations
 
-## 📖 Usage Guide
+## Usage Guide
 
 ### Getting Started (No Account Required!)
 1. Navigate to [http://localhost:3000](http://localhost:3000)
@@ -210,14 +210,14 @@ src/
 - All values update instantly
 - Formatting adapts to selected currency
 
-## 🔒 Security Features
+## Security Features
 - Bcrypt password hashing
 - Email verification requirement for credentials signup
 - Protected API routes with session validation
 - MongoDB ObjectId validation
 - User-specific data isolation
 
-## 🎯 Key Formulas
+## Key Formulas
 
 ### Mortgage EMI
 ```
@@ -234,7 +234,7 @@ Where:
 Prorated Rent = (Monthly Rent / Days in Month) × Days Occupied
 ```
 
-## 🌐 Environment Variables
+## Environment Variables
 
 All environment variables are pre-configured in `.env.local`:
 
@@ -246,13 +246,13 @@ All environment variables are pre-configured in `.env.local`:
 - `EMAIL`: Gmail address for sending emails
 - `EMAIL_PASSWORD`: Gmail app password
 
-## 📱 Responsive Design
+## Responsive Design
 
 - Mobile: Optimized for phones (320px+)
 - Tablet: Enhanced layout (768px+)
 - Desktop: Full feature set (1024px+)
 
-## 🎨 Design Tokens
+## Design Tokens
 
 ### Colors
 - Background Primary: `#0a0a0f`
@@ -270,11 +270,11 @@ All environment variables are pre-configured in `.env.local`:
 - Medium: 16px
 - Large: 24px
 
-## 📄 License
+## License
 
 This project is private and for demonstration purposes.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - NextAuth.js for authentication
 - Recharts for visualizations
@@ -283,4 +283,4 @@ This project is private and for demonstration purposes.
 
 ---
 
-**Built with ❤️ using Next.js 15, Tailwind v4, and MongoDB**
+**Built using Next.js 15, Tailwind v4, and MongoDB**

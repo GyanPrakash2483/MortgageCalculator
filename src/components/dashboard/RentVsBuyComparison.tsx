@@ -29,7 +29,17 @@ export default function RentVsBuyComparison({
     [principal, interestRate, tenure, monthlyRent, rentIncrease]
   );
 
-  const CustomTooltip = ({ active, payload }: any) => {
+  interface TooltipProps {
+    active?: boolean;
+    payload?: Array<{
+      name: string;
+      value: number;
+      payload: { year: number; rentCost: number; buyCost: number };
+      color: string;
+    }>;
+  }
+
+  const CustomTooltip = ({ active, payload }: TooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div
@@ -42,7 +52,7 @@ export default function RentVsBuyComparison({
           <p className="text-sm mb-2" style={{ color: 'var(--color-text-secondary)' }}>
             Year {payload[0].payload.year}
           </p>
-          {payload.map((entry: any, index: number) => (
+          {payload.map((entry, index: number) => (
             <div key={index} className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full" style={{ background: entry.color }} />
               <span className="text-sm" style={{ color: 'var(--color-text-primary)' }}>
@@ -96,8 +106,8 @@ export default function RentVsBuyComparison({
           >
             <p className="text-sm mb-2" style={{ color: 'var(--color-text-secondary)' }}>
               {data.length > 0 && data[data.length - 1].rentCost > data[data.length - 1].buyCost
-                ? '🏡 Buying is cheaper long-term'
-                : '🏠 Renting is cheaper long-term'}
+                ? 'Buying is cheaper long-term'
+                : 'Renting is cheaper long-term'}
             </p>
             <p className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
               Based on {data.length} year projection

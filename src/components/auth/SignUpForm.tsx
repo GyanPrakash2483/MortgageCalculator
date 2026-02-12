@@ -36,7 +36,7 @@ export default function SignUpForm() {
         setSuccess(true);
         setFormData({ name: '', email: '', password: '' });
       }
-    } catch (err) {
+    } catch {
       setError('An error occurred. Please try again.');
     } finally {
       setIsLoading(false);
@@ -59,7 +59,7 @@ export default function SignUpForm() {
           Check Your Email
         </h3>
         <p className="text-sm max-w-sm" style={{ color: 'var(--color-text-secondary)' }}>
-          We've sent a verification link to your email address. Please click the link to verify
+          We&apos;ve sent a verification link to your email address. Please click the link to verify
           your account and sign in.
         </p>
       </div>

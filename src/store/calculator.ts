@@ -40,7 +40,7 @@ interface CalculatorState {
   setProratedRentInputs: (inputs: Partial<CalculatorState['proratedRentInputs']>) => void;
 
   // Load calculation
-  loadCalculation: (type: CalculatorTab, inputs: any, currency: Currency) => void;
+  loadCalculation: (type: CalculatorTab, inputs: unknown, currency: Currency) => void;
 }
 
 const useCalculatorStore = create<CalculatorState>((set) => ({
@@ -89,12 +89,12 @@ const useCalculatorStore = create<CalculatorState>((set) => ({
         currency,
       };
 
-      if (type === 'mortgage') {
-        updates.mortgageInputs = { ...state.mortgageInputs, ...inputs };
-      } else if (type === 'rent') {
-        updates.rentInputs = { ...state.rentInputs, ...inputs };
-      } else if (type === 'prorated_rent') {
-        updates.proratedRentInputs = { ...state.proratedRentInputs, ...inputs };
+      if (type === 'mortgage' && typeof inputs === 'object' && inputs !== null) {
+        updates.mortgageInputs = { ...state.mortgageInputs, ...(inputs as Partial<typeof state.mortgageInputs>) };
+      } else if (type === 'rent' && typeof inputs === 'object' && inputs !== null) {
+        updates.rentInputs = { ...state.rentInputs, ...(inputs as Partial<typeof state.rentInputs>) };
+      } else if (type === 'prorated_rent' && typeof inputs === 'object' && inputs !== null) {
+        updates.proratedRentInputs = { ...state.proratedRentInputs, ...(inputs as Partial<typeof state.proratedRentInputs>) };
       }
 
       return updates;

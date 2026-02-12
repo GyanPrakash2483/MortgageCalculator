@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
         </head>
         <body>
           <div class="container">
-            <h1>❌ Invalid Verification Link</h1>
+            <h1>Invalid Verification Link</h1>
             <p>The verification link is invalid or has expired.</p>
           </div>
         </body>
@@ -101,7 +101,7 @@ export async function GET(req: NextRequest) {
           </head>
           <body>
             <div class="container">
-              <h1>⏰ Link Expired</h1>
+              <h1>Link Expired</h1>
               <p>This verification link has expired or is invalid.</p>
               <a href="/">Return to Sign In</a>
             </div>
@@ -160,7 +160,7 @@ export async function GET(req: NextRequest) {
         </head>
         <body>
           <div class="container">
-            <h1>✅ Email Verified!</h1>
+            <h1>Email Verified!</h1>
             <p>Your email has been successfully verified. You can now sign in to your account.</p>
             <a href="/">Sign In Now</a>
           </div>

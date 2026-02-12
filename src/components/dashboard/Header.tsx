@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Home, LogOut, UserCircle, LogIn } from 'lucide-react';
+import { Home, LogOut, LogIn } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import CurrencyToggle from './CurrencyToggle';
+import Image from 'next/image';
 
 export default function Header() {
   const { data: session } = useSession();
@@ -52,9 +53,11 @@ export default function Header() {
           {session ? (
             <div className="flex items-center gap-3">
               {session.user?.image ? (
-                <img
+                <Image
                   src={session.user.image}
                   alt=""
+                  width={40}
+                  height={40}
                   className="w-10 h-10 rounded-full border-2"
                   style={{ borderColor: 'var(--color-border)' }}
                 />

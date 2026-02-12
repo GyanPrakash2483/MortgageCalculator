@@ -5,14 +5,33 @@ import { PieChart, Pie, Cell, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tool
 import { Currency } from '@/models/Calculation';
 import { formatCurrency } from '@/lib/formatters';
 
+interface ChartData {
+  name?: string;
+  value?: number;
+  fill?: string;
+  balance?: number;
+  year?: number;
+  [key: string]: string | number | undefined;
+}
+
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    name: string;
+    value: number;
+    payload: ChartData;
+    color: string;
+  }>;
+}
+
 interface FinancialChartProps {
   type: 'donut' | 'area';
-  data: any[];
+  data: ChartData[];
   currency: Currency;
 }
 
 export default function FinancialChart({ type, data, currency }: FinancialChartProps) {
-  const CustomTooltip = ({ active, payload }: any) => {
+  const CustomTooltip = ({ active, payload }: TooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div
@@ -22,7 +41,7 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
             border: '1px solid var(--color-border)',
           }}
         >
-          {payload.map((entry: any, index: number) => (
+          {payload.map((entry, index: number) => (
             <div key={index} className="flex items-center gap-2">
               <div
                 className="w-3 h-3 rounded-full"
@@ -53,7 +72,7 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
             dataKey="value"
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.fill} />
+              <Cell key={`cell-${index}`} fill={entry.fill as string || '#06b6d4'} />
             ))}
           </Pie>
           <Tooltip content={<CustomTooltip />} />

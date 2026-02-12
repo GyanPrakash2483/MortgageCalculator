@@ -4,7 +4,7 @@ import dbConnect from '@/lib/db';
 import Calculation from '@/models/Calculation';
 import mongoose from 'mongoose';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const session = await auth();
 
@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
       .limit(50);
 
     return NextResponse.json(calculations);
-  } catch (error: any) {
+  } catch (error) {
     console.error('List calculations error:', error);
     return NextResponse.json({ error: 'Failed to fetch calculations' }, { status: 500 });
   }

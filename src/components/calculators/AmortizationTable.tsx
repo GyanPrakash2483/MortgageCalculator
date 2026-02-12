@@ -3,7 +3,7 @@
 import React from 'react';
 import { AmortizationEntry } from '@/lib/calculations';
 import { Currency } from '@/models/Calculation';
-import { formatCurrency, formatNumber } from '@/lib/formatters';
+import { formatCurrency } from '@/lib/formatters';
 
 interface AmortizationTableProps {
   data: AmortizationEntry[];

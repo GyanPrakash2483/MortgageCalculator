@@ -9,7 +9,7 @@ import Input from '@/components/ui/Input';
 import SliderInput from '@/components/calculators/SliderInput';
 import useCalculatorStore from '@/store/calculator';
 import { calculateProratedRent } from '@/lib/calculations';
-import { formatCurrency, formatNumber } from '@/lib/formatters';
+import { formatCurrency } from '@/lib/formatters';
 
 export default function ProratedRentCalculator() {
   const { data: session } = useSession();
@@ -56,7 +56,7 @@ export default function ProratedRentCalculator() {
       } else {
         setSaveMessage('✗ Failed to save calculation');
       }
-    } catch (error) {
+    } catch {
       setSaveMessage('✗ Error saving calculation');
     } finally {
       setIsSaving(false);

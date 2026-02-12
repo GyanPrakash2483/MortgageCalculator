@@ -71,7 +71,7 @@ export async function sendVerificationEmail(email: string, token: string) {
         </head>
         <body>
           <div class="container">
-            <h1>Welcome to Mortgage Calculator! 🏡</h1>
+            <h1>Welcome to Mortgage Calculator!</h1>
             <p>Thank you for signing up. Please verify your email address to get started with our powerful financial calculators.</p>
             <p>Click the button below to verify your email:</p>
             <a href="${verificationUrl}" class="button">Verify Email Address</a>

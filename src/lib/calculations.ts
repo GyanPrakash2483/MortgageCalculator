@@ -20,6 +20,7 @@ export interface ChartDataPoint {
   balance: number;
   principal: number;
   interest: number;
+  [key: string]: number;
 }
 
 export interface RentVsBuyData {

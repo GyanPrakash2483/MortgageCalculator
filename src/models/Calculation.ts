@@ -25,8 +25,10 @@ export interface ICalculation extends Document {
   userId: mongoose.Types.ObjectId;
   type: CalculationType;
   currency: Currency;
-  inputs: MortgageInputs | RentInputs | ProratedRentInputs;
-  results: Record<string, any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  inputs: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  results: any;
   createdAt: Date;
   updatedAt: Date;
 }

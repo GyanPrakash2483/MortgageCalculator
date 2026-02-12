@@ -33,7 +33,7 @@ export async function DELETE(
     }
 
     return NextResponse.json({ message: 'Calculation deleted successfully' });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Delete calculation error:', error);
     return NextResponse.json({ error: 'Failed to delete calculation' }, { status: 500 });
   }

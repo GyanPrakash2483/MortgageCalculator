@@ -7,8 +7,8 @@ import GlassCard from '@/components/ui/GlassCard';
 import Button from '@/components/ui/Button';
 import SliderInput from '@/components/calculators/SliderInput';
 import useCalculatorStore from '@/store/calculator';
-import { calculateMortgage, calculateRentVsBuy } from '@/lib/calculations';
-import { formatCurrency, formatNumber } from '@/lib/formatters';
+import { calculateMortgage } from '@/lib/calculations';
+import { formatCurrency } from '@/lib/formatters';
 import FinancialChart from '@/components/calculators/FinancialChart';
 import AmortizationTable from '@/components/calculators/AmortizationTable';
 import RentVsBuyComparison from '@/components/dashboard/RentVsBuyComparison';
@@ -59,7 +59,7 @@ export default function MortgageCalculator() {
       } else {
         setSaveMessage('✗ Failed to save calculation');
       }
-    } catch (error) {
+    } catch {
       setSaveMessage('✗ Error saving calculation');
     } finally {
       setIsSaving(false);

@@ -17,19 +17,8 @@ function HomeContent() {
   return (
     <div
       className="min-h-screen p-4 sm:p-6 lg:p-8 relative"
-      style={{ background: 'var(--color-bg-primary)', zIndex: 2 }}
+      style={{ zIndex: 2 }}
     >
-      {/* Background gradient */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div
-          className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10 blur-3xl"
-          style={{ background: 'var(--color-accent-cyan)' }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-10 blur-3xl"
-          style={{ background: 'var(--color-accent-blue)' }}
-        />
-      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <Header />
