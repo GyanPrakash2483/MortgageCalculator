@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { SessionProvider } from 'next-auth/react';
 import { motion } from 'framer-motion';
 import { Home, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -9,7 +10,7 @@ import SignInForm from '@/components/auth/SignInForm';
 import SignUpForm from '@/components/auth/SignUpForm';
 import OAuthButtons from '@/components/auth/OAuthButtons';
 
-export default function AuthPage() {
+function AuthContent() {
   const [isSignUp, setIsSignUp] = useState(false);
   const router = useRouter();
 
@@ -135,5 +136,13 @@ export default function AuthPage() {
         </p>
       </motion.div>
     </div>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <SessionProvider>
+      <AuthContent />
+    </SessionProvider>
   );
 }
