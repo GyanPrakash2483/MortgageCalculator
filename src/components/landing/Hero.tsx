@@ -86,7 +86,7 @@ export default function Hero() {
           >
             Smart mortgage, rent, and prorated rent calculations
             <br />
-            <span className="neon-text">in retro style</span>
+            <span className="neon-text">for your financial future</span>
           </motion.p>
 
           {/* CTA Buttons */}

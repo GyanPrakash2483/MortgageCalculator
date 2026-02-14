@@ -71,7 +71,7 @@ function AuthContent() {
               fontFamily: 'var(--font-sans)',
             }}
           >
-            Retro Financial System
+            Financial Calculator
           </p>
         </div>
 

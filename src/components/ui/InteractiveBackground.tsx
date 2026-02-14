@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function InteractiveBackground() {
@@ -10,6 +10,30 @@ export default function InteractiveBackground() {
   const springConfig = { damping: 25, stiffness: 100 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
+
+  // Generate particle data only on client to avoid hydration mismatch
+  const [particles, setParticles] = useState<Array<{
+    id: number;
+    left: number;
+    top: number;
+    xOffset: number;
+    duration: number;
+    delay: number;
+  }>>([]);
+
+  // Only generate particles on client mount
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 20 }, (_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        xOffset: Math.random() * 100 - 50,
+        duration: 8 + Math.random() * 8,
+        delay: Math.random() * 5,
+      }))
+    );
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -183,39 +207,39 @@ export default function InteractiveBackground() {
         ))}
 
         {/* Floating Neon Particles */}
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle) => (
           <motion.div
-            key={`particle-${i}`}
+            key={`particle-${particle.id}`}
             className="absolute w-2 h-2"
             style={{
               background: 
-                i % 4 === 0 
+                particle.id % 4 === 0 
                   ? 'var(--color-neon-cyan)' 
-                  : i % 4 === 1 
+                  : particle.id % 4 === 1 
                   ? 'var(--color-neon-pink)'
-                  : i % 4 === 2
+                  : particle.id % 4 === 2
                   ? 'var(--color-neon-purple)'
                   : 'var(--color-neon-yellow)',
               boxShadow: 
-                i % 4 === 0 
+                particle.id % 4 === 0 
                   ? 'var(--shadow-glow-cyan)' 
-                  : i % 4 === 1 
+                  : particle.id % 4 === 1 
                   ? 'var(--shadow-glow-pink)'
                   : 'var(--shadow-glow-purple)',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
             animate={{
               y: [0, -150, 0],
-              x: [0, Math.random() * 100 - 50, 0],
+              x: [0, particle.xOffset, 0],
               opacity: [0, 1, 0],
               scale: [0, 1, 0],
             }}
             transition={{
-              duration: 8 + Math.random() * 8,
+              duration: particle.duration,
               repeat: Infinity,
               ease: 'easeInOut',
-              delay: Math.random() * 5,
+              delay: particle.delay,
             }}
           />
         ))}

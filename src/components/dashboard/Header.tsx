@@ -50,7 +50,7 @@ export default function Header() {
                 fontFamily: 'var(--font-sans)',
               }}
             >
-              Retro Financial System
+              Financial Calculator
             </p>
           </div>
         </button>

@@ -34,7 +34,7 @@ export default function Footer() {
                 fontFamily: 'var(--font-sans)',
               }}
             >
-              RETRO FINANCIAL SYSTEM
+              FINANCIAL CALCULATOR
             </p>
             <p
               className="text-xs"
@@ -155,7 +155,7 @@ export default function Footer() {
                   fill: 'var(--color-neon-pink)',
                 }}
               />{' '}
-              in Retro Style
+              for your future
             </span>
           </p>
           <div className="flex gap-4">
