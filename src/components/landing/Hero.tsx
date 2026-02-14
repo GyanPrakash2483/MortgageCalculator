@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Calculator, TrendingUp, Zap } from 'lucide-react';
+import { Calculator, TrendingUp } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
 export default function Hero() {
@@ -53,30 +53,6 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-8 border-3"
-            style={{
-              background: 'var(--color-bg-tertiary)',
-              borderColor: 'var(--color-neon-purple)',
-              boxShadow: '0 0 20px rgba(191, 0, 255, 0.3)',
-            }}
-          >
-            <Zap className="w-4 h-4" style={{ color: 'var(--color-neon-yellow)' }} />
-            <span
-              className="text-xs font-bold uppercase tracking-wider"
-              style={{
-                color: 'var(--color-neon-cyan)',
-                fontFamily: 'var(--font-display)',
-              }}
-            >
-              Retro Financial System
-            </span>
-          </motion.div>
-
           {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
