@@ -10,9 +10,16 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({ label, error, icon, className = '', ...props }: InputProps) {
   return (
-    <div className="flex flex-col gap-1.5 w-full">
+    <div className="flex flex-col gap-2 w-full">
       {label && (
-        <label className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>
+        <label 
+          className="text-xs font-bold uppercase tracking-wider"
+          style={{ 
+            color: 'var(--color-neon-cyan)',
+            textShadow: '0 0 10px rgba(0, 240, 255, 0.5)',
+            fontFamily: 'var(--font-display)',
+          }}
+        >
           {label}
         </label>
       )}
@@ -20,31 +27,33 @@ export default function Input({ label, error, icon, className = '', ...props }: 
         {icon && (
           <div
             className="absolute left-4 top-1/2 -translate-y-1/2"
-            style={{ color: 'var(--color-text-tertiary)' }}
+            style={{ color: 'var(--color-neon-purple)' }}
           >
             {icon}
           </div>
         )}
         <input
           className={`
-            w-full px-4 py-3 rounded-xl
-            ${icon ? 'pl-12' : ''}
-            text-(--color-text-primary) placeholder-slate-500
-            focus:outline-hidden focus:ring-2 focus:ring-cyan-500/50
-            transition-all duration-200
+            retro-input w-full
+            ${icon ? 'pl-12 pr-4' : 'px-4'}
+            py-3
             ${className}
           `}
-          style={{
-            background: 'var(--color-surface)',
-            border: '1px solid var(--color-border)',
-          }}
           {...props}
         />
       </div>
       {error && (
-        <span className="text-sm" style={{ color: 'var(--color-error)' }}>
+        <div
+          className="text-xs font-bold px-3 py-2 border-2"
+          style={{ 
+            color: 'var(--color-error)',
+            borderColor: 'var(--color-error)',
+            background: 'rgba(255, 0, 110, 0.1)',
+            textShadow: '0 0 10px rgba(255, 0, 110, 0.5)',
+          }}
+        >
           {error}
-        </span>
+        </div>
       )}
     </div>
   );

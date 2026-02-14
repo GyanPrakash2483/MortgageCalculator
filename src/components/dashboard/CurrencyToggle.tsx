@@ -8,38 +8,56 @@ export default function CurrencyToggle() {
   const { currency, setCurrency } = useCalculatorStore();
 
   return (
-    <div className="flex gap-1 p-1 rounded-lg" style={{ background: 'var(--color-bg-secondary)' }}>
+    <div className="flex gap-2 p-1 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
       <button
         onClick={() => setCurrency('USD')}
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-          currency === 'USD' ? 'text-white' : ''
-        }`}
+        className={`
+          flex items-center gap-2 px-3 py-2 font-bold text-xs uppercase tracking-wider
+          transition-all duration-200 border-2
+          ${currency === 'USD' ? 'text-white' : 'hover:-translate-x-0.5 hover:-translate-y-0.5'}
+        `}
         style={
           currency === 'USD'
             ? {
-                background: 'linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-blue))',
+                background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
+                borderColor: 'var(--color-neon-cyan)',
+                boxShadow: '0 0 15px rgba(0, 240, 255, 0.5)',
+                fontFamily: 'var(--font-display)',
               }
-            : { color: 'var(--color-text-secondary)' }
+            : { 
+                color: 'var(--color-neon-cyan)',
+                borderColor: 'transparent',
+                fontFamily: 'var(--font-display)',
+              }
         }
       >
         <DollarSign className="w-4 h-4" />
-        <span className="text-sm hidden sm:inline">USD</span>
+        <span className="hidden sm:inline">USD</span>
       </button>
       <button
         onClick={() => setCurrency('INR')}
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-          currency === 'INR' ? 'text-white' : ''
-        }`}
+        className={`
+          flex items-center gap-2 px-3 py-2 font-bold text-xs uppercase tracking-wider
+          transition-all duration-200 border-2
+          ${currency === 'INR' ? 'text-white' : 'hover:-translate-x-0.5 hover:-translate-y-0.5'}
+        `}
         style={
           currency === 'INR'
             ? {
-                background: 'linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-blue))',
+                background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
+                borderColor: 'var(--color-neon-cyan)',
+                boxShadow: '0 0 15px rgba(0, 240, 255, 0.5)',
+                fontFamily: 'var(--font-display)',
               }
-            : { color: 'var(--color-text-secondary)' }
+            : { 
+                color: 'var(--color-neon-cyan)',
+                borderColor: 'transparent',
+                fontFamily: 'var(--font-display)',
+              }
         }
       >
         <IndianRupee className="w-4 h-4" />
-        <span className="text-sm hidden sm:inline">INR</span>
+        <span className="hidden sm:inline">INR</span>
       </button>
     </div>
   );

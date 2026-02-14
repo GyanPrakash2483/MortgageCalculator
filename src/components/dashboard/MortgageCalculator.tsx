@@ -72,8 +72,8 @@ export default function MortgageCalculator() {
         {/* Input Panel */}
         <GlassCard>
           <h2
-            className="text-2xl font-bold mb-6"
-            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+            className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
+            style={{ fontFamily: 'var(--font-display)' }}
           >
             Mortgage Inputs
           </h2>
@@ -127,8 +127,16 @@ export default function MortgageCalculator() {
 
           {saveMessage && (
             <p
-              className="text-sm text-center mt-2"
-              style={{ color: saveMessage.includes('✓') ? 'var(--color-success)' : 'var(--color-error)' }}
+              className="text-sm text-center mt-2 font-bold uppercase tracking-wide border-2 px-3 py-2"
+              style={{ 
+                color: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
+                borderColor: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
+                background: saveMessage.includes('✓') ? 'rgba(57, 255, 20, 0.1)' : 'rgba(255, 0, 110, 0.1)',
+                fontFamily: 'var(--font-display)',
+                textShadow: saveMessage.includes('✓') 
+                  ? '0 0 10px rgba(57, 255, 20, 0.6)' 
+                  : '0 0 10px rgba(255, 0, 110, 0.6)',
+              }}
             >
               {saveMessage}
             </p>
@@ -138,49 +146,49 @@ export default function MortgageCalculator() {
         {/* Results Panel */}
         <GlassCard>
           <h2
-            className="text-2xl font-bold mb-6"
-            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+            className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
+            style={{ fontFamily: 'var(--font-display)' }}
           >
             Monthly Payment
           </h2>
 
           <div
-            className="text-5xl font-bold mb-8 gradient-text"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="text-5xl font-bold mb-8 neon-pink"
+            style={{ fontFamily: 'var(--font-sans)' }}
           >
             {formatCurrency(results.monthlyPayment, currency, true)}
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div>
-              <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
+              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                 Loan Amount
               </p>
-              <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {formatCurrency(loanAmount, currency)}
               </p>
             </div>
-            <div>
-              <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
+              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                 Down Payment
               </p>
-              <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {formatCurrency(mortgageInputs.downPayment, currency)}
               </p>
             </div>
-            <div>
-              <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
+              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                 Total Payment
               </p>
-              <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {formatCurrency(results.totalPayment, currency)}
               </p>
             </div>
-            <div>
-              <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
+              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                 Total Interest
               </p>
-              <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {formatCurrency(results.totalInterest, currency)}
               </p>
             </div>
@@ -190,16 +198,16 @@ export default function MortgageCalculator() {
           <div className="space-y-6 mt-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <PieChartIcon className="w-5 h-5" style={{ color: 'var(--color-accent-cyan)' }} />
-                <h3 className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                <PieChartIcon className="w-5 h-5" style={{ color: 'var(--color-neon-cyan)' }} />
+                <h3 className="font-bold uppercase tracking-wide text-sm" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                   Principal vs Interest
                 </h3>
               </div>
               <FinancialChart
                 type="donut"
                 data={[
-                  { name: 'Principal', value: loanAmount, fill: '#06b6d4' },
-                  { name: 'Interest', value: results.totalInterest, fill: '#3b82f6' },
+                  { name: 'Principal', value: loanAmount, fill: '#00f0ff' },
+                  { name: 'Interest', value: results.totalInterest, fill: '#ff006e' },
                 ]}
                 currency={currency}
               />
@@ -207,8 +215,8 @@ export default function MortgageCalculator() {
 
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <AreaChartIcon className="w-5 h-5" style={{ color: 'var(--color-accent-blue)' }} />
-                <h3 className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                <AreaChartIcon className="w-5 h-5" style={{ color: 'var(--color-neon-pink)' }} />
+                <h3 className="font-bold uppercase tracking-wide text-sm" style={{ color: 'var(--color-neon-pink)', fontFamily: 'var(--font-display)' }}>
                   Loan Balance Over Time
                 </h3>
               </div>
@@ -221,8 +229,8 @@ export default function MortgageCalculator() {
       {/* Amortization Table */}
       <GlassCard>
         <h2
-          className="text-2xl font-bold mb-6"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+          className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
           Year-by-Year Breakdown
         </h2>

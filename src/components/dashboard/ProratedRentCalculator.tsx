@@ -68,8 +68,8 @@ export default function ProratedRentCalculator() {
       {/* Input Panel */}
       <GlassCard>
         <h2
-          className="text-2xl font-bold mb-6"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+          className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
           Prorated Rent Calculator
         </h2>
@@ -111,8 +111,16 @@ export default function ProratedRentCalculator() {
 
         {saveMessage && (
           <p
-            className="text-sm text-center mt-2"
-            style={{ color: saveMessage.includes('✓') ? 'var(--color-success)' : 'var(--color-error)' }}
+            className="text-sm text-center mt-2 font-bold uppercase tracking-wide border-2 px-3 py-2"
+            style={{ 
+              color: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
+              borderColor: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
+              background: saveMessage.includes('✓') ? 'rgba(57, 255, 20, 0.1)' : 'rgba(255, 0, 110, 0.1)',
+              fontFamily: 'var(--font-display)',
+              textShadow: saveMessage.includes('✓') 
+                ? '0 0 10px rgba(57, 255, 20, 0.6)' 
+                : '0 0 10px rgba(255, 0, 110, 0.6)',
+            }}
           >
             {saveMessage}
           </p>
@@ -122,19 +130,19 @@ export default function ProratedRentCalculator() {
       {/* Results Panel */}
       <GlassCard>
         <h2
-          className="text-2xl font-bold mb-6"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+          className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
           Prorated Amount
         </h2>
 
         <div>
-          <p className="text-sm mb-2" style={{ color: 'var(--color-text-secondary)' }}>
+          <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
             You Pay
           </p>
           <div
-            className="text-5xl font-bold mb-8 gradient-text"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="text-5xl font-bold mb-8 neon-pink"
+            style={{ fontFamily: 'var(--font-sans)' }}
           >
             {formatCurrency(results.proratedRent, currency, true)}
           </div>
@@ -142,62 +150,62 @@ export default function ProratedRentCalculator() {
 
         <div className="space-y-4">
           <div
-            className="p-4 rounded-lg"
-            style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
+            className="p-4 border-3"
+            style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}
           >
-            <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
               Full Monthly Rent
             </p>
-            <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+            <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
               {formatCurrency(proratedRentInputs.monthlyRent, currency)}
             </p>
           </div>
 
           <div
-            className="p-4 rounded-lg"
-            style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
+            className="p-4 border-3"
+            style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}
           >
-            <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
               Daily Rate
             </p>
-            <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+            <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
               {formatCurrency(results.dailyRate, currency, true)}
             </p>
           </div>
 
           <div
-            className="p-4 rounded-lg"
-            style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
+            className="p-4 border-3"
+            style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}
           >
-            <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
               Days in Month
             </p>
-            <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+            <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
               {results.daysInMonth} days
             </p>
           </div>
 
           <div
-            className="p-4 rounded-lg"
-            style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
+            className="p-4 border-3"
+            style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}
           >
-            <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
               Days Occupied
             </p>
-            <p className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+            <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
               {proratedRentInputs.daysOccupied} days
             </p>
           </div>
         </div>
 
         <div
-          className="mt-6 p-4 rounded-lg"
-          style={{ background: 'rgba(6, 182, 212, 0.1)', border: '1px solid rgba(6, 182, 212, 0.3)' }}
+          className="mt-6 p-4 border-3"
+          style={{ background: 'rgba(0, 240, 255, 0.05)', borderColor: 'var(--color-neon-cyan)' }}
         >
-          <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-            <strong>Formula:</strong> (Monthly Rent / Days in Month) × Days Occupied
+          <p className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
+            Formula: (Monthly Rent / Days in Month) × Days Occupied
           </p>
-          <p className="text-sm mt-2" style={{ color: 'var(--color-text-secondary)' }}>
+          <p className="text-sm mt-2 font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
             ({formatCurrency(proratedRentInputs.monthlyRent, currency)} / {results.daysInMonth}) × {proratedRentInputs.daysOccupied} ={' '}
             {formatCurrency(results.proratedRent, currency, true)}
           </p>

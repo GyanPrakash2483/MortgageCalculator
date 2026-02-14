@@ -31,7 +31,7 @@ export default function SignInForm() {
       if (result?.error) {
         setError(result.error);
       } else if (result?.ok) {
-        router.push('/');
+        router.push('/calculator');
         router.refresh();
       }
     } catch {
@@ -64,11 +64,12 @@ export default function SignInForm() {
 
       {error && (
         <div
-          className="p-3 rounded-lg text-sm"
+          className="p-3 border-2 text-sm font-bold"
           style={{
-            background: 'rgba(248, 113, 113, 0.1)',
-            border: '1px solid rgba(248, 113, 113, 0.3)',
+            background: 'rgba(255, 0, 110, 0.1)',
+            borderColor: 'var(--color-error)',
             color: 'var(--color-error)',
+            textShadow: '0 0 10px rgba(255, 0, 110, 0.5)',
           }}
         >
           {error}

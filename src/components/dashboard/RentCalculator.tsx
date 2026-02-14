@@ -59,8 +59,8 @@ export default function RentCalculator() {
       {/* Input Panel */}
       <GlassCard>
         <h2
-          className="text-2xl font-bold mb-6"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+          className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
           Rent Calculator
         </h2>
@@ -84,8 +84,16 @@ export default function RentCalculator() {
 
         {saveMessage && (
           <p
-            className="text-sm text-center mt-2"
-            style={{ color: saveMessage.includes('✓') ? 'var(--color-success)' : 'var(--color-error)' }}
+            className="text-sm text-center mt-2 font-bold uppercase tracking-wide border-2 px-3 py-2"
+            style={{ 
+              color: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
+              borderColor: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
+              background: saveMessage.includes('✓') ? 'rgba(57, 255, 20, 0.1)' : 'rgba(255, 0, 110, 0.1)',
+              fontFamily: 'var(--font-display)',
+              textShadow: saveMessage.includes('✓') 
+                ? '0 0 10px rgba(57, 255, 20, 0.6)' 
+                : '0 0 10px rgba(255, 0, 110, 0.6)',
+            }}
           >
             {saveMessage}
           </p>
@@ -95,20 +103,20 @@ export default function RentCalculator() {
       {/* Results Panel */}
       <GlassCard>
         <h2
-          className="text-2xl font-bold mb-6"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
+          className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
           Rent Projections
         </h2>
 
         <div className="space-y-6">
           <div>
-            <p className="text-sm mb-2" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
               Monthly Rent
             </p>
             <div
-              className="text-4xl font-bold gradient-text"
-              style={{ fontFamily: 'var(--font-display)' }}
+              className="text-4xl font-bold neon-pink"
+              style={{ fontFamily: 'var(--font-sans)' }}
             >
               {formatCurrency(results.monthlyRent, currency, true)}
             </div>
@@ -116,37 +124,37 @@ export default function RentCalculator() {
 
           <div className="grid grid-cols-1 gap-4">
             <div
-              className="p-4 rounded-lg"
-              style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
+              className="p-4 border-3"
+              style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}
             >
-              <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                 Yearly Cost
               </p>
-              <p className="text-2xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+              <p className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {formatCurrency(results.yearlyRent, currency)}
               </p>
             </div>
 
             <div
-              className="p-4 rounded-lg"
-              style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
+              className="p-4 border-3"
+              style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}
             >
-              <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                 5-Year Cost
               </p>
-              <p className="text-2xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+              <p className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {formatCurrency(results.fiveYearRent, currency)}
               </p>
             </div>
 
             <div
-              className="p-4 rounded-lg"
-              style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
+              className="p-4 border-3"
+              style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}
             >
-              <p className="text-sm mb-1" style={{ color: 'var(--color-text-secondary)' }}>
+              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
                 10-Year Cost
               </p>
-              <p className="text-2xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+              <p className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {formatCurrency(results.tenYearRent, currency)}
               </p>
             </div>

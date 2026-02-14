@@ -103,7 +103,7 @@ export async function GET(req: NextRequest) {
             <div class="container">
               <h1>Link Expired</h1>
               <p>This verification link has expired or is invalid.</p>
-              <a href="/">Return to Sign In</a>
+              <a href="/auth">Return to Sign In</a>
             </div>
           </body>
         </html>
@@ -162,7 +162,7 @@ export async function GET(req: NextRequest) {
           <div class="container">
             <h1>Email Verified!</h1>
             <p>Your email has been successfully verified. You can now sign in to your account.</p>
-            <a href="/">Sign In Now</a>
+            <a href="/auth">Sign In Now</a>
           </div>
         </body>
       </html>

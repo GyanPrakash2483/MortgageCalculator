@@ -45,20 +45,28 @@ export default function SignUpForm() {
 
   if (success) {
     return (
-      <div className="flex flex-col items-center gap-4 py-8 text-center">
+      <div className="flex flex-col items-center gap-4 py-8 text-center border-3 p-6" style={{ borderColor: 'var(--color-neon-green)', background: 'rgba(57, 255, 20, 0.05)' }}>
         <div
-          className="w-16 h-16 rounded-full flex items-center justify-center"
+          className="w-16 h-16 flex items-center justify-center border-3"
           style={{
-            background: 'rgba(52, 211, 153, 0.1)',
-            color: 'var(--color-success)',
+            background: 'var(--color-bg-tertiary)',
+            borderColor: 'var(--color-neon-green)',
+            boxShadow: '0 0 20px rgba(57, 255, 20, 0.5)',
           }}
         >
-          <CheckCircle className="w-8 h-8" />
+          <CheckCircle className="w-8 h-8" style={{ color: 'var(--color-neon-green)' }} />
         </div>
-        <h3 className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+        <h3 
+          className="text-xl font-bold uppercase tracking-wider neon-text" 
+          style={{ 
+            fontFamily: 'var(--font-display)',
+            color: 'var(--color-neon-green)',
+            textShadow: '0 0 20px rgba(57, 255, 20, 0.8)',
+          }}
+        >
           Check Your Email
         </h3>
-        <p className="text-sm max-w-sm" style={{ color: 'var(--color-text-secondary)' }}>
+        <p className="text-sm max-w-sm font-medium" style={{ color: 'var(--color-text-secondary)', fontFamily: 'var(--font-sans)' }}>
           We&apos;ve sent a verification link to your email address. Please click the link to verify
           your account and sign in.
         </p>
@@ -99,11 +107,12 @@ export default function SignUpForm() {
 
       {error && (
         <div
-          className="p-3 rounded-lg text-sm"
+          className="p-3 border-2 text-sm font-bold"
           style={{
-            background: 'rgba(248, 113, 113, 0.1)',
-            border: '1px solid rgba(248, 113, 113, 0.3)',
+            background: 'rgba(255, 0, 110, 0.1)',
+            borderColor: 'var(--color-error)',
             color: 'var(--color-error)',
+            textShadow: '0 0 10px rgba(255, 0, 110, 0.5)',
           }}
         >
           {error}

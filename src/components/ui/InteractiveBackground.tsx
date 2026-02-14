@@ -7,7 +7,6 @@ export default function InteractiveBackground() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth spring animation for mouse tracking
   const springConfig = { damping: 25, stiffness: 100 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
@@ -24,69 +23,69 @@ export default function InteractiveBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-      {/* Animated mesh gradient background */}
+      {/* Retro Grid Floor */}
       <div className="absolute inset-0">
-        {/* Top-right gradient orb - follows mouse */}
-        <motion.div
-          className="absolute w-96 h-96 rounded-full opacity-10 blur-3xl"
+        {/* Perspective Grid */}
+        <div
+          className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle, var(--color-accent-cyan), transparent)',
-            x: useSpring(
-              useMotionValue(0),
-              { damping: 30, stiffness: 50 }
-            ),
-            y: useSpring(
-              useMotionValue(0),
-              { damping: 30, stiffness: 50 }
-            ),
-            top: '10%',
-            right: '10%',
+            background: `
+              linear-gradient(0deg, transparent 0%, var(--color-bg-primary) 100%),
+              repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 40px,
+                rgba(0, 240, 255, 0.1) 40px,
+                rgba(0, 240, 255, 0.1) 41px
+              ),
+              repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                rgba(255, 0, 110, 0.1) 40px,
+                rgba(255, 0, 110, 0.1) 41px
+              )
+            `,
+            transform: 'perspective(500px) rotateX(60deg) scale(2)',
+            transformOrigin: 'center bottom',
+            opacity: 0.3,
+          }}
+        />
+
+        {/* Neon Grid Overlay */}
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(var(--color-neon-cyan) 2px, transparent 2px),
+              linear-gradient(90deg, var(--color-neon-cyan) 2px, transparent 2px)
+            `,
+            backgroundSize: '80px 80px',
+            opacity: 0.05,
           }}
           animate={{
-            x: [0, 50, -30, 0],
-            y: [0, -40, 30, 0],
-            scale: [1, 1.2, 0.9, 1],
+            backgroundPosition: ['0px 0px', '80px 80px'],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: 'linear',
           }}
         />
 
-        {/* Bottom-left gradient orb - follows mouse inversely */}
+        {/* Glowing Orbs */}
         <motion.div
-          className="absolute w-96 h-96 rounded-full opacity-10 blur-3xl"
+          className="absolute w-96 h-96 rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(circle, var(--color-accent-blue), transparent)',
-            bottom: '10%',
-            left: '10%',
+            background: 'radial-gradient(circle, rgba(0, 240, 255, 0.3), transparent)',
+            top: '10%',
+            right: '10%',
           }}
           animate={{
-            x: [0, -40, 50, 0],
-            y: [0, 50, -30, 0],
-            scale: [1, 0.9, 1.2, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-
-        {/* Center gradient orb - purple accent */}
-        <motion.div
-          className="absolute w-[500px] h-[500px] rounded-full opacity-8 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, var(--color-accent-purple), transparent)',
-            top: '50%',
-            left: '50%',
-            marginTop: '-250px',
-            marginLeft: '-250px',
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.05, 0.08, 0.05],
+            x: [0, 100, -50, 0],
+            y: [0, -80, 60, 0],
+            scale: [1, 1.3, 0.9, 1],
+            opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
             duration: 15,
@@ -95,11 +94,51 @@ export default function InteractiveBackground() {
           }}
         />
 
-        {/* Mouse follower orb - cyan */}
         <motion.div
-          className="absolute w-64 h-64 rounded-full opacity-15 blur-3xl"
+          className="absolute w-96 h-96 rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(circle, var(--color-accent-cyan), transparent)',
+            background: 'radial-gradient(circle, rgba(255, 0, 110, 0.3), transparent)',
+            bottom: '10%',
+            left: '10%',
+          }}
+          animate={{
+            x: [0, -100, 50, 0],
+            y: [0, 80, -60, 0],
+            scale: [1, 0.9, 1.3, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        <motion.div
+          className="absolute w-[500px] h-[500px] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(191, 0, 255, 0.2), transparent)',
+            top: '50%',
+            left: '50%',
+            marginTop: '-250px',
+            marginLeft: '-250px',
+          }}
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.35, 0.2],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Mouse Followers with Retro Colors */}
+        <motion.div
+          className="absolute w-64 h-64 rounded-full blur-2xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 240, 255, 0.4), transparent)',
             x,
             y,
             translateX: '-50%',
@@ -107,11 +146,10 @@ export default function InteractiveBackground() {
           }}
         />
 
-        {/* Secondary mouse follower orb - blue (lagging) */}
         <motion.div
-          className="absolute w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute w-80 h-80 rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(circle, var(--color-accent-blue), transparent)',
+            background: 'radial-gradient(circle, rgba(255, 0, 110, 0.3), transparent)',
             x: useSpring(mouseX, { damping: 40, stiffness: 60 }),
             y: useSpring(mouseY, { damping: 40, stiffness: 60 }),
             translateX: '-50%',
@@ -119,50 +157,62 @@ export default function InteractiveBackground() {
           }}
         />
 
-        {/* Animated lines/rays */}
-        {[...Array(3)].map((_, i) => (
+        {/* Animated Laser Lines */}
+        {[...Array(5)].map((_, i) => (
           <motion.div
-            key={i}
-            className="absolute h-px opacity-5"
+            key={`laser-${i}`}
+            className="absolute h-0.5 w-full"
             style={{
-              background: 'linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent)',
-              width: '100%',
-              top: `${20 + i * 30}%`,
+              background: `linear-gradient(90deg, transparent, ${
+                i % 2 === 0 ? 'var(--color-neon-cyan)' : 'var(--color-neon-pink)'
+              }, transparent)`,
+              top: `${15 + i * 18}%`,
+              boxShadow: i % 2 === 0 ? 'var(--shadow-glow-cyan)' : 'var(--shadow-glow-pink)',
             }}
             animate={{
-              x: ['-100%', '100%'],
-              opacity: [0, 0.05, 0],
+              x: ['-100%', '200%'],
+              opacity: [0, 1, 1, 0],
             }}
             transition={{
-              duration: 8 + i * 2,
+              duration: 6 + i * 1.5,
               repeat: Infinity,
               ease: 'linear',
-              delay: i * 2,
+              delay: i * 1.2,
             }}
           />
         ))}
 
-        {/* Floating particles */}
-        {[...Array(15)].map((_, i) => (
+        {/* Floating Neon Particles */}
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
-            className="absolute w-1 h-1 rounded-full"
+            className="absolute w-2 h-2"
             style={{
-              background: i % 3 === 0 
-                ? 'var(--color-accent-cyan)' 
-                : i % 3 === 1 
-                ? 'var(--color-accent-blue)'
-                : 'var(--color-accent-purple)',
+              background: 
+                i % 4 === 0 
+                  ? 'var(--color-neon-cyan)' 
+                  : i % 4 === 1 
+                  ? 'var(--color-neon-pink)'
+                  : i % 4 === 2
+                  ? 'var(--color-neon-purple)'
+                  : 'var(--color-neon-yellow)',
+              boxShadow: 
+                i % 4 === 0 
+                  ? 'var(--shadow-glow-cyan)' 
+                  : i % 4 === 1 
+                  ? 'var(--shadow-glow-pink)'
+                  : 'var(--shadow-glow-purple)',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -100, 0],
-              x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0, 0.6, 0],
+              y: [0, -150, 0],
+              x: [0, Math.random() * 100 - 50, 0],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
             }}
             transition={{
-              duration: 10 + Math.random() * 10,
+              duration: 8 + Math.random() * 8,
               repeat: Infinity,
               ease: 'easeInOut',
               delay: Math.random() * 5,
@@ -170,28 +220,67 @@ export default function InteractiveBackground() {
           />
         ))}
 
-        {/* Radial grid pattern that pulses */}
+        {/* Retro Sun/Circle */}
         <motion.div
-          className="absolute inset-0"
+          className="absolute left-1/2 top-20 -translate-x-1/2"
           style={{
-            backgroundImage: `
-              radial-gradient(circle at 50% 50%, transparent 0%, var(--color-bg-primary) 100%),
-              repeating-radial-gradient(
-                circle at 50% 50%,
-                transparent,
-                transparent 50px,
-                rgba(6, 182, 212, 0.03) 51px,
-                rgba(6, 182, 212, 0.03) 52px
-              )
+            width: '150px',
+            height: '150px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, var(--color-neon-pink), var(--color-neon-yellow))',
+            boxShadow: `
+              0 0 20px var(--color-neon-pink),
+              0 0 40px var(--color-neon-pink),
+              0 0 60px var(--color-neon-pink),
+              inset 0 0 30px rgba(0, 0, 0, 0.3)
             `,
           }}
           animate={{
-            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.1, 1],
+            boxShadow: [
+              '0 0 20px var(--color-neon-pink), 0 0 40px var(--color-neon-pink), 0 0 60px var(--color-neon-pink)',
+              '0 0 30px var(--color-neon-yellow), 0 0 60px var(--color-neon-yellow), 0 0 90px var(--color-neon-yellow)',
+              '0 0 20px var(--color-neon-pink), 0 0 40px var(--color-neon-pink), 0 0 60px var(--color-neon-pink)',
+            ],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        >
+          {/* Inner rings */}
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 rounded-full"
+              style={{
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                transform: `scale(${0.6 + i * 0.15})`,
+              }}
+            />
+          ))}
+        </motion.div>
+
+        {/* Pulsing Border Frame */}
+        <motion.div
+          className="absolute inset-8"
+          style={{
+            border: '3px solid var(--color-neon-cyan)',
+            boxShadow: 'inset var(--shadow-glow-cyan)',
+          }}
+          animate={{
+            borderColor: [
+              'var(--color-neon-cyan)',
+              'var(--color-neon-pink)',
+              'var(--color-neon-purple)',
+              'var(--color-neon-cyan)',
+            ],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: 'linear',
           }}
         />
       </div>

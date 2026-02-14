@@ -35,19 +35,24 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
     if (active && payload && payload.length) {
       return (
         <div
-          className="p-3 rounded-lg"
+          className="p-3 border-3"
           style={{
-            background: 'var(--color-surface)',
-            border: '1px solid var(--color-border)',
+            background: 'var(--color-bg-secondary)',
+            borderColor: 'var(--color-neon-cyan)',
+            boxShadow: '0 0 20px rgba(0, 240, 255, 0.4)',
           }}
         >
           {payload.map((entry, index: number) => (
             <div key={index} className="flex items-center gap-2">
               <div
-                className="w-3 h-3 rounded-full"
-                style={{ background: entry.color }}
+                className="w-3 h-3 border-2"
+                style={{ 
+                  background: entry.color,
+                  borderColor: 'var(--color-bg-primary)',
+                  boxShadow: `0 0 10px ${entry.color}`,
+                }}
               />
-              <span className="text-sm" style={{ color: 'var(--color-text-primary)' }}>
+              <span className="text-sm font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
                 {entry.name}: {formatCurrency(entry.value, currency, true)}
               </span>
             </div>
@@ -70,9 +75,17 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
             outerRadius={120}
             paddingAngle={5}
             dataKey="value"
+            strokeWidth={2}
+            stroke="var(--color-bg-primary)"
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.fill as string || '#06b6d4'} />
+              <Cell 
+                key={`cell-${index}`} 
+                fill={entry.fill as string || '#00f0ff'}
+                style={{
+                  filter: `drop-shadow(0 0 8px ${entry.fill as string || '#00f0ff'})`,
+                }}
+              />
             ))}
           </Pie>
           <Tooltip content={<CustomTooltip />} />
@@ -81,7 +94,15 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
             height={36}
             iconType="circle"
             formatter={(value) => (
-              <span style={{ color: 'var(--color-text-primary)', fontSize: '14px' }}>{value}</span>
+              <span style={{ 
+                color: 'var(--color-text-primary)', 
+                fontSize: '12px',
+                fontWeight: 'bold',
+                fontFamily: 'var(--font-sans)',
+                textTransform: 'uppercase',
+              }}>
+                {value}
+              </span>
             )}
           />
         </PieChart>
@@ -95,29 +116,48 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
         <AreaChart data={data}>
           <defs>
             <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+              <stop offset="5%" stopColor="#00f0ff" stopOpacity={0.4} />
+              <stop offset="95%" stopColor="#bf00ff" stopOpacity={0.05} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+          <CartesianGrid 
+            strokeDasharray="3 3" 
+            stroke="rgba(191, 0, 255, 0.2)" 
+            strokeWidth={1}
+          />
           <XAxis
             dataKey="year"
-            stroke="var(--color-text-tertiary)"
-            tick={{ fill: 'var(--color-text-tertiary)', fontSize: 12 }}
+            stroke="var(--color-neon-purple)"
+            tick={{ 
+              fill: 'var(--color-neon-cyan)', 
+              fontSize: 11,
+              fontWeight: 'bold',
+              fontFamily: 'var(--font-sans)',
+            }}
+            axisLine={{ stroke: 'var(--color-neon-purple)', strokeWidth: 2 }}
           />
           <YAxis
-            stroke="var(--color-text-tertiary)"
-            tick={{ fill: 'var(--color-text-tertiary)', fontSize: 12 }}
+            stroke="var(--color-neon-purple)"
+            tick={{ 
+              fill: 'var(--color-neon-cyan)', 
+              fontSize: 11,
+              fontWeight: 'bold',
+              fontFamily: 'var(--font-sans)',
+            }}
+            axisLine={{ stroke: 'var(--color-neon-purple)', strokeWidth: 2 }}
             tickFormatter={(value) => formatCurrency(value, currency)}
           />
           <Tooltip content={<CustomTooltip />} />
           <Area
             type="monotone"
             dataKey="balance"
-            stroke="#06b6d4"
-            strokeWidth={2}
+            stroke="#00f0ff"
+            strokeWidth={3}
             fillOpacity={1}
             fill="url(#colorBalance)"
+            style={{
+              filter: 'drop-shadow(0 0 8px #00f0ff)',
+            }}
           />
         </AreaChart>
       </ResponsiveContainer>
