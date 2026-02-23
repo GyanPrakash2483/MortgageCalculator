@@ -18,29 +18,36 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-sm uppercase tracking-wider transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variants = {
     primary: `
-      bg-gradient-to-r from-[var(--color-neon-cyan)] to-[var(--color-neon-purple)]
-      text-white border-3 border-[var(--color-neon-cyan)]
-      hover:border-[var(--color-neon-pink)] hover:-translate-x-1 hover:-translate-y-1
-      active:translate-x-0 active:translate-y-0
-      shadow-[4px_4px_0_rgba(0,0,0,0.5)]
-      hover:shadow-[0_0_20px_rgba(0,240,255,0.6)]
+      text-white border-none
+      hover:-translate-y-0.5
+      active:translate-y-0
     `,
     secondary: `
-      bg-[var(--color-bg-tertiary)] text-[var(--color-neon-cyan)]
-      border-3 border-[var(--color-neon-purple)]
-      hover:bg-[var(--color-surface-hover)] hover:border-[var(--color-neon-cyan)]
-      shadow-[4px_4px_0_rgba(0,0,0,0.5)]
-      hover:shadow-[0_0_20px_rgba(191,0,255,0.4)]
+      bg-white text-[var(--color-text-primary)]
+      border-2 border-gray-300
+      hover:border-[var(--color-accent-blue)]
+      hover:bg-gray-50
+      hover:-translate-y-0.5
+      shadow-sm hover:shadow-md
     `,
     ghost: `
-      text-[var(--color-neon-cyan)] border-2 border-transparent
-      hover:text-[var(--color-neon-pink)] hover:bg-[var(--color-surface)]
-      hover:border-[var(--color-neon-pink)]
+      text-[var(--color-text-primary)] border-none
+      hover:bg-gray-100
     `,
+  };
+
+  const getButtonStyle = () => {
+    if (variant === 'primary') {
+      return {
+        background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
+        boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+      };
+    }
+    return {};
   };
 
   return (
@@ -48,7 +55,8 @@ export default function Button({
       className={`${baseStyles} ${variants[variant]} ${className}`}
       disabled={disabled || isLoading}
       style={{
-        fontFamily: 'var(--font-display)',
+        fontFamily: 'var(--font-sans)',
+        ...getButtonStyle(),
       }}
       {...props}
     >

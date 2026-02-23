@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Save, PieChart as PieChartIcon, AreaChart as AreaChartIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import GlassCard from '@/components/ui/GlassCard';
@@ -18,12 +18,24 @@ export default function MortgageCalculator() {
   const { currency, mortgageInputs, setMortgageInputs, triggerRefresh } = useCalculatorStore();
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState('');
+  
+  // Debounced values for expensive calculations
+  const [debouncedInputs, setDebouncedInputs] = useState(mortgageInputs);
 
-  const loanAmount = mortgageInputs.principal - mortgageInputs.downPayment;
+  // Debounce the inputs with 150ms delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedInputs(mortgageInputs);
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, [mortgageInputs]);
+
+  const loanAmount = debouncedInputs.principal - debouncedInputs.downPayment;
 
   const results = useMemo(
-    () => calculateMortgage(loanAmount, mortgageInputs.interestRate, mortgageInputs.tenure),
-    [loanAmount, mortgageInputs.interestRate, mortgageInputs.tenure]
+    () => calculateMortgage(loanAmount, debouncedInputs.interestRate, debouncedInputs.tenure),
+    [loanAmount, debouncedInputs.interestRate, debouncedInputs.tenure]
   );
 
   const handleSave = async () => {
@@ -173,7 +185,7 @@ export default function MortgageCalculator() {
                 Down Payment
               </p>
               <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
-                {formatCurrency(mortgageInputs.downPayment, currency)}
+                {formatCurrency(debouncedInputs.downPayment, currency)}
               </p>
             </div>
             <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
@@ -206,8 +218,8 @@ export default function MortgageCalculator() {
               <FinancialChart
                 type="donut"
                 data={[
-                  { name: 'Principal', value: loanAmount, fill: '#00f0ff' },
-                  { name: 'Interest', value: results.totalInterest, fill: '#ff006e' },
+                  { name: 'Principal', value: loanAmount, fill: '#3b82f6' },
+                  { name: 'Interest', value: results.totalInterest, fill: '#ec4899' },
                 ]}
                 currency={currency}
               />
@@ -240,8 +252,8 @@ export default function MortgageCalculator() {
       {/* Rent vs Buy Comparison */}
       <RentVsBuyComparison
         principal={loanAmount}
-        interestRate={mortgageInputs.interestRate}
-        tenure={mortgageInputs.tenure}
+        interestRate={debouncedInputs.interestRate}
+        tenure={debouncedInputs.tenure}
       />
     </div>
   );

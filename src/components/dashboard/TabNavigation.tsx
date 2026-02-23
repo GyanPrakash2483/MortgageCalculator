@@ -20,26 +20,24 @@ export default function TabNavigation() {
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
           className={`
-            flex items-center gap-2 px-6 py-3 font-bold text-sm uppercase tracking-wider
-            transition-all duration-200 whitespace-nowrap border-3
+            flex items-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg
+            transition-all duration-200 whitespace-nowrap
             ${activeTab === tab.id 
-              ? 'text-white shadow-[4px_4px_0_rgba(0,0,0,0.8)]' 
-              : 'hover:-translate-x-1 hover:-translate-y-1 shadow-[2px_2px_0_rgba(0,0,0,0.5)]'
+              ? 'text-white' 
+              : 'hover:-translate-y-0.5 text-gray-700 hover:bg-gray-100'
             }
           `}
           style={
             activeTab === tab.id
               ? {
-                  background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
-                  borderColor: 'var(--color-neon-cyan)',
-                  boxShadow: '0 0 20px rgba(0, 240, 255, 0.6), 4px 4px 0 rgba(0, 0, 0, 0.8)',
-                  fontFamily: 'var(--font-display)',
+                  background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
+                  boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+                  fontFamily: 'var(--font-sans)',
                 }
               : {
-                  background: 'var(--color-bg-tertiary)',
-                  borderColor: 'var(--color-neon-purple)',
-                  color: 'var(--color-neon-cyan)',
-                  fontFamily: 'var(--font-display)',
+                  background: 'white',
+                  border: '1px solid #e5e7eb',
+                  fontFamily: 'var(--font-sans)',
                 }
           }
         >

@@ -10,11 +10,10 @@ export default function Footer() {
 
   return (
     <footer
-      className="mt-12 border-t-3 py-8"
+      className="mt-16 border-t py-12"
       style={{
-        borderColor: 'var(--color-neon-purple)',
-        background: 'rgba(26, 11, 46, 0.6)',
-        backdropFilter: 'blur(10px)',
+        borderColor: '#e5e7eb',
+        background: 'var(--color-bg-secondary)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,19 +21,22 @@ export default function Footer() {
           {/* Brand Section */}
           <div>
             <h3
-              className="text-lg font-bold uppercase tracking-wider mb-4 neon-text"
-              style={{ fontFamily: 'var(--font-display)' }}
+              className="text-lg font-bold tracking-tight mb-4"
+              style={{ 
+                fontFamily: 'var(--font-display)',
+                color: 'var(--color-text-primary)',
+              }}
             >
               Mortgage Calc
             </h3>
             <p
-              className="text-sm font-bold mb-4"
+              className="text-sm font-medium mb-4"
               style={{
                 color: 'var(--color-text-secondary)',
                 fontFamily: 'var(--font-sans)',
               }}
             >
-              FINANCIAL CALCULATOR
+              Financial Calculator
             </p>
             <p
               className="text-xs"
@@ -50,11 +52,10 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4
-              className="text-sm font-bold uppercase tracking-wider mb-4"
+              className="text-sm font-semibold mb-4"
               style={{
-                color: 'var(--color-neon-cyan)',
-                fontFamily: 'var(--font-display)',
-                textShadow: '0 0 10px rgba(0, 240, 255, 0.5)',
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-sans)',
               }}
             >
               Quick Links
@@ -68,21 +69,19 @@ export default function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => router.push(link.path)}
-                    className="text-xs font-bold uppercase tracking-wide transition-all duration-200 hover:-translate-x-1"
+                    className="text-sm transition-all duration-200 hover:translate-x-1"
                     style={{
                       color: 'var(--color-text-secondary)',
                       fontFamily: 'var(--font-sans)',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'var(--color-neon-pink)';
-                      e.currentTarget.style.textShadow = '0 0 10px rgba(255, 0, 110, 0.6)';
+                      e.currentTarget.style.color = 'var(--color-accent-blue)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = 'var(--color-text-secondary)';
-                      e.currentTarget.style.textShadow = 'none';
                     }}
                   >
-                    &gt; {link.label}
+                    {link.label}
                   </button>
                 </li>
               ))}
@@ -92,11 +91,10 @@ export default function Footer() {
           {/* Social Links */}
           <div>
             <h4
-              className="text-sm font-bold uppercase tracking-wider mb-4"
+              className="text-sm font-semibold mb-4"
               style={{
-                color: 'var(--color-neon-cyan)',
-                fontFamily: 'var(--font-display)',
-                textShadow: '0 0 10px rgba(0, 240, 255, 0.5)',
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-sans)',
               }}
             >
               Connect
@@ -109,21 +107,20 @@ export default function Footer() {
               ].map((social) => (
                 <button
                   key={social.label}
-                  className="w-10 h-10 flex items-center justify-center border-3 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 shadow-[2px_2px_0_rgba(0,0,0,0.5)]"
+                  className="w-9 h-9 flex items-center justify-center rounded-lg transition-all duration-200 hover:-translate-y-0.5"
                   style={{
-                    background: 'var(--color-bg-tertiary)',
-                    borderColor: 'var(--color-neon-purple)',
-                    color: 'var(--color-neon-cyan)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--color-neon-cyan)';
-                    e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 240, 255, 0.4), 2px 2px 0 rgba(0, 0, 0, 0.5)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--color-neon-purple)';
-                    e.currentTarget.style.boxShadow = '2px 2px 0 rgba(0, 0, 0, 0.5)';
+                    background: '#f3f4f6',
+                    color: 'var(--color-text-primary)',
                   }}
                   aria-label={social.label}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'var(--color-accent-blue)';
+                    e.currentTarget.style.color = 'white';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#f3f4f6';
+                    e.currentTarget.style.color = 'var(--color-text-primary)';
+                  }}
                 >
                   <social.icon className="w-5 h-5" />
                 </button>
@@ -134,11 +131,11 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div
-          className="pt-6 border-t-2 flex flex-col md:flex-row items-center justify-between gap-4"
-          style={{ borderColor: 'var(--color-neon-purple)' }}
+          className="pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-4"
+          style={{ borderColor: '#e5e7eb' }}
         >
           <p
-            className="text-xs font-bold uppercase tracking-wide flex items-center gap-2"
+            className="text-sm flex items-center gap-2"
             style={{
               color: 'var(--color-text-tertiary)',
               fontFamily: 'var(--font-sans)',
@@ -151,8 +148,8 @@ export default function Footer() {
               <Heart
                 className="w-3 h-3"
                 style={{
-                  color: 'var(--color-neon-pink)',
-                  fill: 'var(--color-neon-pink)',
+                  color: 'var(--color-accent-pink)',
+                  fill: 'var(--color-accent-pink)',
                 }}
               />{' '}
               for your future
@@ -162,18 +159,16 @@ export default function Footer() {
             {['Privacy', 'Terms', 'Contact'].map((item) => (
               <button
                 key={item}
-                className="text-xs font-bold uppercase tracking-wide transition-all duration-200"
+                className="text-sm transition-all duration-200"
                 style={{
                   color: 'var(--color-text-tertiary)',
                   fontFamily: 'var(--font-sans)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--color-neon-cyan)';
-                  e.currentTarget.style.textShadow = '0 0 10px rgba(0, 240, 255, 0.6)';
+                  e.currentTarget.style.color = 'var(--color-accent-blue)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.color = 'var(--color-text-tertiary)';
-                  e.currentTarget.style.textShadow = 'none';
                 }}
               >
                 {item}

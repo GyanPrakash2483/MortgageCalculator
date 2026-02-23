@@ -13,8 +13,8 @@ export default function GlassCard({ children, className = '', hover = false }: G
     <div
       className={`
         glass-card
-        ${hover ? 'hover:border-opacity-100 hover:translate-x-1 hover:translate-y-1 cursor-pointer' : ''}
-        transition-all duration-300
+        ${hover ? 'hover:-translate-x-1 hover:-translate-y-1 cursor-pointer' : ''}
+        transition-all duration-100
         ${className}
       `}
       style={{

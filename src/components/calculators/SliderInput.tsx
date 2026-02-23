@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 interface SliderInputProps {
   label: string;
@@ -23,59 +23,56 @@ export default function SliderInput({
   unit = '',
   formatValue,
 }: SliderInputProps) {
+  const [isDragging, setIsDragging] = useState(false);
   const displayValue = formatValue ? formatValue(value) : value;
   const percentage = ((value - min) / (max - min)) * 100;
 
   return (
-    <div className="space-y-3">
-      <div className="flex justify-between items-center">
+    <div className="space-y-2">
+      <div className="flex justify-between items-baseline mb-3">
         <label 
-          className="text-xs font-bold uppercase tracking-wider"
+          className="text-sm font-medium"
           style={{ 
-            color: 'var(--color-neon-cyan)',
-            fontFamily: 'var(--font-display)',
-            textShadow: '0 0 10px rgba(0, 240, 255, 0.5)',
+            color: 'var(--color-text-secondary)',
+            fontFamily: 'var(--font-sans)',
           }}
         >
           {label}
         </label>
         <span 
-          className="text-lg font-bold px-3 py-1 border-2"
+          className="text-2xl font-bold tabular-nums"
           style={{ 
-            color: 'var(--color-neon-pink)',
-            borderColor: 'var(--color-neon-pink)',
-            background: 'var(--color-bg-tertiary)',
-            fontFamily: 'var(--font-sans)',
-            textShadow: '0 0 10px rgba(255, 0, 110, 0.6)',
-            boxShadow: '0 0 15px rgba(255, 0, 110, 0.2)',
+            color: 'var(--color-text-primary)',
+            fontFamily: 'var(--font-display)',
           }}
         >
           {displayValue}
-          {unit && ` ${unit}`}
+          <span className="text-base font-medium ml-1" style={{ color: 'var(--color-text-tertiary)' }}>
+            {unit}
+          </span>
         </span>
       </div>
-      <div className="relative h-8 border-3 bg-[var(--color-bg-tertiary)]" style={{ borderColor: 'var(--color-neon-purple)' }}>
-        {/* Progress bar */}
-        <div
-          className="absolute left-0 top-0 h-full transition-all duration-200"
+      
+      <div className="relative py-2">
+        {/* Track Background */}
+        <div 
+          className="h-1.5 rounded-full relative"
           style={{
-            width: `${percentage}%`,
-            background: 'linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-pink))',
-            boxShadow: '0 0 20px rgba(0, 240, 255, 0.5)',
+            background: '#e5e7eb',
           }}
-        />
+        >
+          {/* Progress Fill */}
+          <div
+            className="absolute top-0 left-0 h-full rounded-full transition-all duration-150"
+            style={{
+              width: `${percentage}%`,
+              background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
+              boxShadow: isDragging ? '0 0 12px rgba(59, 130, 246, 0.5)' : 'none',
+            }}
+          />
+        </div>
         
-        {/* Slider thumb */}
-        <div
-          className="absolute top-1/2 -translate-y-1/2 w-6 h-6 border-3 cursor-grab active:cursor-grabbing transition-all duration-200"
-          style={{
-            left: `calc(${percentage}% - 12px)`,
-            background: 'var(--color-neon-yellow)',
-            borderColor: 'var(--color-bg-primary)',
-            boxShadow: '0 0 20px var(--color-neon-yellow), 0 0 40px var(--color-neon-yellow)',
-          }}
-        />
-        
+        {/* Invisible Native Slider */}
         <input
           type="range"
           min={min}
@@ -83,11 +80,37 @@ export default function SliderInput({
           step={step}
           value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+          onMouseDown={() => setIsDragging(true)}
+          onMouseUp={() => setIsDragging(false)}
+          onTouchStart={() => setIsDragging(true)}
+          onTouchEnd={() => setIsDragging(false)}
+          className="absolute top-0 w-full h-full opacity-0 cursor-pointer"
+          style={{ zIndex: 20 }}
         />
+        
+        {/* Custom Thumb */}
+        <div
+          className="absolute top-1/2 pointer-events-none transition-all duration-150"
+          style={{
+            left: `${percentage}%`,
+            transform: `translate(-50%, -50%) scale(${isDragging ? 1.2 : 1})`,
+            zIndex: 10,
+          }}
+        >
+          <div
+            className="w-4 h-4 rounded-full"
+            style={{
+              background: 'white',
+              boxShadow: isDragging 
+                ? '0 0 0 4px rgba(59, 130, 246, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3)' 
+                : '0 0 0 2px white, 0 0 0 3px #3b82f6, 0 2px 4px rgba(0, 0, 0, 0.2)',
+            }}
+          />
+        </div>
       </div>
+      
       <div 
-        className="flex justify-between text-xs font-bold uppercase"
+        className="flex justify-between text-xs mt-1"
         style={{ 
           color: 'var(--color-text-tertiary)',
           fontFamily: 'var(--font-sans)',

@@ -38,13 +38,16 @@ export default function HowItWorks() {
           className="text-center mb-16"
         >
           <h2
-            className="text-4xl md:text-6xl font-bold uppercase tracking-wider mb-4 neon-pink"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+            style={{ 
+              fontFamily: 'var(--font-display)',
+              color: 'var(--color-text-primary)',
+            }}
           >
             How It Works
           </h2>
           <p
-            className="text-lg font-bold max-w-2xl mx-auto"
+            className="text-lg max-w-2xl mx-auto"
             style={{
               color: 'var(--color-text-secondary)',
               fontFamily: 'var(--font-sans)',
@@ -55,65 +58,45 @@ export default function HowItWorks() {
         </motion.div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {/* Connecting Lines (Desktop) */}
-          <div className="hidden md:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--color-neon-purple)] to-transparent opacity-30" />
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              className="relative"
+              transition={{ delay: index * 0.15, duration: 0.5 }}
             >
               <div
-                className="p-8 border-3 text-center group hover:-translate-y-2 transition-all duration-300"
+                className="p-8 rounded-xl text-center hover:-translate-y-1 transition-all duration-200"
                 style={{
-                  background: 'var(--color-bg-secondary)',
-                  borderColor: 'var(--color-neon-purple)',
-                  boxShadow: '0 0 20px rgba(191, 0, 255, 0.2), 4px 4px 0 rgba(0, 0, 0, 0.5)',
+                  background: 'white',
+                  border: '1px solid #e5e7eb',
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
                 }}
               >
-                {/* Number Badge */}
-                <div
-                  className="inline-flex items-center justify-center w-16 h-16 border-3 mb-6 relative z-10"
-                  style={{
-                    background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-pink))',
-                    borderColor: 'var(--color-bg-primary)',
-                    boxShadow: '0 0 30px rgba(0, 240, 255, 0.6)',
-                  }}
-                >
-                  <span
-                    className="text-2xl font-bold"
-                    style={{
-                      color: 'white',
-                      fontFamily: 'var(--font-display)',
-                      textShadow: '0 0 10px rgba(255, 255, 255, 0.8)',
-                    }}
-                  >
-                    {step.number}
-                  </span>
-                </div>
-
                 {/* Icon */}
                 <div
-                  className="w-12 h-12 flex items-center justify-center mx-auto mb-4"
+                  className="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-lg"
                   style={{
-                    color: 'var(--color-neon-cyan)',
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1))',
                   }}
                 >
-                  <step.icon className="w-10 h-10" />
+                  <step.icon className="w-8 h-8" style={{ color: '#3b82f6' }} />
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="text-xl font-bold uppercase tracking-wide mb-3"
+                  className="text-xl font-semibold mb-3"
                   style={{
-                    color: 'var(--color-neon-cyan)',
+                    color: 'var(--color-text-primary)',
                     fontFamily: 'var(--font-display)',
-                    textShadow: '0 0 10px rgba(0, 240, 255, 0.5)',
                   }}
                 >
                   {step.title}
@@ -121,7 +104,7 @@ export default function HowItWorks() {
 
                 {/* Description */}
                 <p
-                  className="text-sm font-bold"
+                  className="text-sm leading-relaxed"
                   style={{
                     color: 'var(--color-text-secondary)',
                     fontFamily: 'var(--font-sans)',

@@ -11,41 +11,6 @@ export default function Hero() {
 
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
-      {/* Decorative Elements */}
-      <motion.div
-        className="absolute top-20 right-10 w-32 h-32 border-3 opacity-30"
-        style={{
-          borderColor: 'var(--color-neon-cyan)',
-          boxShadow: '0 0 30px rgba(0, 240, 255, 0.3)',
-        }}
-        animate={{
-          rotate: [0, 90, 180, 270, 360],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-      />
-
-      <motion.div
-        className="absolute bottom-20 left-10 w-24 h-24 border-3 opacity-20"
-        style={{
-          borderColor: 'var(--color-neon-pink)',
-          boxShadow: '0 0 30px rgba(255, 0, 110, 0.3)',
-        }}
-        animate={{
-          rotate: [360, 270, 180, 90, 0],
-          scale: [1, 0.9, 1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-      />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -58,19 +23,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-wider mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
             style={{
               fontFamily: 'var(--font-display)',
-              background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-pink))',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 40px rgba(0, 240, 255, 0.5)',
+              color: 'var(--color-text-primary)',
             }}
           >
-            Calculate
+            Smart Financial Decisions
             <br />
-            Your Future
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Start Here
+            </span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -78,15 +41,13 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-xl md:text-2xl font-bold mb-12 max-w-3xl mx-auto"
+            className="text-lg md:text-xl font-normal mb-10 max-w-3xl mx-auto leading-relaxed"
             style={{
               color: 'var(--color-text-secondary)',
               fontFamily: 'var(--font-sans)',
             }}
           >
-            Smart mortgage, rent, and prorated rent calculations
-            <br />
-            <span className="neon-text">for your financial future</span>
+            Calculate mortgages, rent, and prorated rent with precision. Make informed decisions with real-time results and beautiful visualizations.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -121,43 +82,24 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto"
+            className="mt-16 flex flex-wrap justify-center gap-8 text-sm"
+            style={{ 
+              color: 'var(--color-text-tertiary)',
+              fontFamily: 'var(--font-sans)',
+            }}
           >
-            {[
-              { label: 'Calculations', value: '3 Types' },
-              { label: 'Accuracy', value: '100%' },
-              { label: 'Cost', value: 'Free' },
-            ].map((stat, index) => (
-              <div
-                key={stat.label}
-                className="p-4 border-3"
-                style={{
-                  background: 'var(--color-bg-secondary)',
-                  borderColor: index === 0 ? 'var(--color-neon-cyan)' : index === 1 ? 'var(--color-neon-pink)' : 'var(--color-neon-purple)',
-                  boxShadow: `0 0 20px ${index === 0 ? 'rgba(0, 240, 255, 0.2)' : index === 1 ? 'rgba(255, 0, 110, 0.2)' : 'rgba(191, 0, 255, 0.2)'}`,
-                }}
-              >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{
-                    color: index === 0 ? 'var(--color-neon-cyan)' : index === 1 ? 'var(--color-neon-pink)' : 'var(--color-neon-purple)',
-                    fontFamily: 'var(--font-sans)',
-                    textShadow: `0 0 20px ${index === 0 ? 'rgba(0, 240, 255, 0.6)' : index === 1 ? 'rgba(255, 0, 110, 0.6)' : 'rgba(191, 0, 255, 0.6)'}`,
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  className="text-xs font-bold uppercase tracking-wider"
-                  style={{
-                    color: 'var(--color-text-tertiary)',
-                    fontFamily: 'var(--font-display)',
-                  }}
-                >
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <span>3 Calculation Types</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+              <span>100% Accurate</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+              <span>Completely Free</span>
+            </div>
           </motion.div>
         </motion.div>
       </div>

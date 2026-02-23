@@ -13,10 +13,7 @@ export default function Header() {
 
   return (
     <header
-      className="glass-card mb-6 border-3"
-      style={{
-        borderColor: 'var(--color-neon-purple)',
-      }}
+      className="glass-card mb-6"
     >
       <div className="flex items-center justify-between">
         {/* Logo */}
@@ -25,28 +22,27 @@ export default function Header() {
           className="flex items-center gap-3 transition-opacity hover:opacity-80"
         >
           <div
-            className="w-12 h-12 flex items-center justify-center border-3"
+            className="w-10 h-10 flex items-center justify-center rounded-lg"
             style={{
-              background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-pink))',
-              borderColor: 'var(--color-bg-primary)',
-              boxShadow: '0 0 20px rgba(0, 240, 255, 0.6)',
+              background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
             }}
           >
-            <Home className="w-6 h-6 text-white" style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.8))' }} />
+            <Home className="w-5 h-5 text-white" />
           </div>
           <div>
             <h1
-              className="text-xl font-bold uppercase tracking-wider neon-text"
+              className="text-xl font-bold tracking-tight"
               style={{
                 fontFamily: 'var(--font-display)',
+                color: 'var(--color-text-primary)',
               }}
             >
               Mortgage Calc
             </h1>
             <p 
-              className="text-xs font-bold uppercase tracking-wide" 
+              className="text-xs font-medium" 
               style={{ 
-                color: 'var(--color-neon-purple)',
+                color: 'var(--color-text-secondary)',
                 fontFamily: 'var(--font-sans)',
               }}
             >
@@ -63,26 +59,21 @@ export default function Header() {
           {session ? (
             <div className="flex items-center gap-3">
               {session.user?.image ? (
-                <div className="border-3 p-0.5" style={{ borderColor: 'var(--color-neon-cyan)' }}>
+                <div className="overflow-hidden rounded-full">
                   <Image
                     src={session.user.image}
                     alt=""
-                    width={40}
-                    height={40}
-                    className="w-10 h-10"
-                    style={{ 
-                      filter: 'contrast(1.2) saturate(1.3)',
-                    }}
+                    width={36}
+                    height={36}
+                    className="w-9 h-9"
                   />
                 </div>
               ) : (
                 <div
-                  className="w-10 h-10 flex items-center justify-center font-bold text-lg border-3"
+                  className="w-9 h-9 flex items-center justify-center font-semibold text-sm rounded-full"
                   style={{
-                    background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
+                    background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
                     color: 'white',
-                    borderColor: 'var(--color-bg-primary)',
-                    textShadow: '0 0 10px rgba(255, 255, 255, 0.8)',
                     fontFamily: 'var(--font-display)',
                   }}
                   title={session.user?.name || session.user?.email || 'User'}
@@ -92,12 +83,12 @@ export default function Header() {
               )}
               <button
                 onClick={() => signOut({ callbackUrl: '/' })}
-                className="flex items-center gap-2 px-4 py-2 transition-all duration-200 font-bold text-xs uppercase tracking-wider border-3 hover:-translate-x-1 hover:-translate-y-1 shadow-[2px_2px_0_rgba(0,0,0,0.5)]"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm border hover:-translate-y-0.5"
                 style={{
-                  background: 'var(--color-bg-tertiary)',
-                  borderColor: 'var(--color-neon-pink)',
-                  color: 'var(--color-neon-pink)',
-                  fontFamily: 'var(--font-display)',
+                  background: 'white',
+                  borderColor: '#e5e7eb',
+                  color: 'var(--color-text-primary)',
+                  fontFamily: 'var(--font-sans)',
                 }}
               >
                 <LogOut className="w-4 h-4" />
@@ -107,12 +98,12 @@ export default function Header() {
           ) : (
             <button
               onClick={() => router.push('/auth')}
-              className="flex items-center gap-2 px-5 py-2.5 transition-all duration-200 text-white font-bold text-sm uppercase tracking-wider border-3 hover:-translate-x-1 hover:-translate-y-1 shadow-[4px_4px_0_rgba(0,0,0,0.5)]"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg transition-all duration-200 font-semibold text-sm hover:-translate-y-0.5"
               style={{
-                background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
-                borderColor: 'var(--color-neon-cyan)',
-                fontFamily: 'var(--font-display)',
-                boxShadow: '0 0 20px rgba(0, 240, 255, 0.4), 4px 4px 0 rgba(0, 0, 0, 0.5)',
+                background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
+                color: 'white',
+                fontFamily: 'var(--font-sans)',
+                boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
               }}
             >
               <LogIn className="w-4 h-4" />

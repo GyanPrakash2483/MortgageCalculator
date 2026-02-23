@@ -30,44 +30,45 @@ function AuthContent() {
         {/* Back Button */}
         <button
           onClick={() => router.push('/')}
-          className="flex items-center gap-2 mb-6 px-4 py-2 transition-all duration-200 border-2 hover:-translate-x-1 hover:-translate-y-1 font-bold text-xs uppercase tracking-wider"
+          className="flex items-center gap-2 mb-6 px-4 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5 font-medium text-sm border"
           style={{
-            color: 'var(--color-neon-cyan)',
-            borderColor: 'var(--color-neon-purple)',
-            background: 'var(--color-bg-tertiary)',
-            fontFamily: 'var(--font-display)',
+            color: 'var(--color-text-secondary)',
+            borderColor: '#e5e7eb',
+            background: 'white',
+            fontFamily: 'var(--font-sans)',
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
           }}
         >
           <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm">Back to Home</span>
+          <span>Back to Home</span>
         </button>
 
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div
-              className="w-14 h-14 flex items-center justify-center border-3"
+              className="w-14 h-14 flex items-center justify-center rounded-lg"
               style={{
-                background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-pink))',
-                borderColor: 'var(--color-bg-primary)',
-                boxShadow: '0 0 30px rgba(0, 240, 255, 0.8), 4px 4px 0 rgba(0, 0, 0, 0.8)',
+                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
               }}
             >
-              <Home className="w-7 h-7 text-white" style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 1))' }} />
+              <Home className="w-7 h-7 text-white" />
             </div>
           </div>
           <h1
-            className="text-3xl font-bold uppercase tracking-wider mb-2 neon-text"
+            className="text-3xl font-bold tracking-tight mb-2"
             style={{
               fontFamily: 'var(--font-display)',
+              color: 'var(--color-text-primary)',
             }}
           >
             Mortgage Calc
           </h1>
           <p 
-            className="text-xs font-bold uppercase tracking-wide" 
+            className="text-sm font-medium" 
             style={{ 
-              color: 'var(--color-neon-purple)',
+              color: 'var(--color-text-secondary)',
               fontFamily: 'var(--font-sans)',
             }}
           >
@@ -77,24 +78,22 @@ function AuthContent() {
 
         <GlassCard>
           {/* Tabs */}
-          <div className="flex gap-2 mb-6 p-1 border-2" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
+          <div className="flex gap-2 mb-6 p-1 rounded-lg" style={{ background: '#f3f4f6' }}>
             <button
               onClick={() => setIsSignUp(false)}
-              className={`flex-1 py-2 px-4 font-bold text-sm uppercase tracking-wider transition-all duration-200 border-2 ${
-                !isSignUp ? 'text-white' : ''
-              }`}
+              className={`flex-1 py-2.5 px-4 font-semibold text-sm rounded-md transition-all duration-200`}
               style={
                 !isSignUp
                   ? {
-                      background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
-                      borderColor: 'var(--color-neon-cyan)',
-                      boxShadow: '0 0 15px rgba(0, 240, 255, 0.5)',
-                      fontFamily: 'var(--font-display)',
+                      background: 'white',
+                      color: 'var(--color-text-primary)',
+                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                      fontFamily: 'var(--font-sans)',
                     }
                   : { 
-                      color: 'var(--color-neon-cyan)',
-                      borderColor: 'transparent',
-                      fontFamily: 'var(--font-display)',
+                      color: 'var(--color-text-secondary)',
+                      fontFamily: 'var(--font-sans)',
+                      background: 'transparent',
                     }
               }
             >
@@ -102,21 +101,19 @@ function AuthContent() {
             </button>
             <button
               onClick={() => setIsSignUp(true)}
-              className={`flex-1 py-2 px-4 font-bold text-sm uppercase tracking-wider transition-all duration-200 border-2 ${
-                isSignUp ? 'text-white' : ''
-              }`}
+              className={`flex-1 py-2.5 px-4 font-semibold text-sm rounded-md transition-all duration-200`}
               style={
                 isSignUp
                   ? {
-                      background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
-                      borderColor: 'var(--color-neon-cyan)',
-                      boxShadow: '0 0 15px rgba(0, 240, 255, 0.5)',
-                      fontFamily: 'var(--font-display)',
+                      background: 'white',
+                      color: 'var(--color-text-primary)',
+                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                      fontFamily: 'var(--font-sans)',
                     }
                   : { 
-                      color: 'var(--color-neon-cyan)',
-                      borderColor: 'transparent',
-                      fontFamily: 'var(--font-display)',
+                      color: 'var(--color-text-secondary)',
+                      fontFamily: 'var(--font-sans)',
+                      background: 'transparent',
                     }
               }
             >
@@ -136,12 +133,12 @@ function AuthContent() {
           </motion.div>
 
           {/* Divider */}
-          <div className="flex items-center gap-4 my-6">
-            <div className="flex-1 h-0.5" style={{ background: 'var(--color-neon-purple)' }} />
-            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-display)' }}>
+          <div className="flex items-center gap-4 my-8">
+            <div className="flex-1 h-px" style={{ background: '#e5e7eb' }} />
+            <span className="text-xs font-medium" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}>
               OR
             </span>
-            <div className="flex-1 h-0.5" style={{ background: 'var(--color-neon-purple)' }} />
+            <div className="flex-1 h-px" style={{ background: '#e5e7eb' }} />
           </div>
 
           {/* OAuth */}
@@ -153,8 +150,8 @@ function AuthContent() {
           {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
           <button
             onClick={() => setIsSignUp(!isSignUp)}
-            className="font-bold hover:underline uppercase tracking-wide"
-            style={{ color: 'var(--color-neon-cyan)', textShadow: '0 0 10px rgba(0, 240, 255, 0.5)' }}
+            className="font-semibold hover:underline transition-colors"
+            style={{ color: 'var(--color-accent-blue)' }}
           >
             {isSignUp ? 'Sign In' : 'Sign Up'}
           </button>

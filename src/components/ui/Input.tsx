@@ -13,11 +13,10 @@ export default function Input({ label, error, icon, className = '', ...props }: 
     <div className="flex flex-col gap-2 w-full">
       {label && (
         <label 
-          className="text-xs font-bold uppercase tracking-wider"
+          className="text-sm font-medium"
           style={{ 
-            color: 'var(--color-neon-cyan)',
-            textShadow: '0 0 10px rgba(0, 240, 255, 0.5)',
-            fontFamily: 'var(--font-display)',
+            color: 'var(--color-text-primary)',
+            fontFamily: 'var(--font-sans)',
           }}
         >
           {label}
@@ -27,7 +26,7 @@ export default function Input({ label, error, icon, className = '', ...props }: 
         {icon && (
           <div
             className="absolute left-4 top-1/2 -translate-y-1/2"
-            style={{ color: 'var(--color-neon-purple)' }}
+            style={{ color: 'var(--color-text-primary)' }}
           >
             {icon}
           </div>
@@ -44,12 +43,11 @@ export default function Input({ label, error, icon, className = '', ...props }: 
       </div>
       {error && (
         <div
-          className="text-xs font-bold px-3 py-2 border-2"
+          className="text-xs font-medium px-3 py-2 rounded-md"
           style={{ 
-            color: 'var(--color-error)',
-            borderColor: 'var(--color-error)',
-            background: 'rgba(255, 0, 110, 0.1)',
-            textShadow: '0 0 10px rgba(255, 0, 110, 0.5)',
+            color: '#dc2626',
+            background: '#fef2f2',
+            border: '1px solid #fecaca',
           }}
         >
           {error}

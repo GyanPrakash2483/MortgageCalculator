@@ -8,26 +8,22 @@ export default function CurrencyToggle() {
   const { currency, setCurrency } = useCalculatorStore();
 
   return (
-    <div className="flex gap-2 p-1 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
+    <div className="flex gap-2 p-1 rounded-lg" style={{ background: '#f3f4f6' }}>
       <button
         onClick={() => setCurrency('USD')}
-        className={`
-          flex items-center gap-2 px-3 py-2 font-bold text-xs uppercase tracking-wider
-          transition-all duration-200 border-2
-          ${currency === 'USD' ? 'text-white' : 'hover:-translate-x-0.5 hover:-translate-y-0.5'}
-        `}
+        className="flex items-center gap-2 px-3 py-2 font-semibold text-sm rounded-md transition-all duration-200"
         style={
           currency === 'USD'
             ? {
-                background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
-                borderColor: 'var(--color-neon-cyan)',
-                boxShadow: '0 0 15px rgba(0, 240, 255, 0.5)',
-                fontFamily: 'var(--font-display)',
+                background: 'white',
+                color: 'var(--color-text-primary)',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                fontFamily: 'var(--font-sans)',
               }
             : { 
-                color: 'var(--color-neon-cyan)',
-                borderColor: 'transparent',
-                fontFamily: 'var(--font-display)',
+                color: 'var(--color-text-secondary)',
+                background: 'transparent',
+                fontFamily: 'var(--font-sans)',
               }
         }
       >
@@ -36,23 +32,19 @@ export default function CurrencyToggle() {
       </button>
       <button
         onClick={() => setCurrency('INR')}
-        className={`
-          flex items-center gap-2 px-3 py-2 font-bold text-xs uppercase tracking-wider
-          transition-all duration-200 border-2
-          ${currency === 'INR' ? 'text-white' : 'hover:-translate-x-0.5 hover:-translate-y-0.5'}
-        `}
+        className="flex items-center gap-2 px-3 py-2 font-semibold text-sm rounded-md transition-all duration-200"
         style={
           currency === 'INR'
             ? {
-                background: 'linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-purple))',
-                borderColor: 'var(--color-neon-cyan)',
-                boxShadow: '0 0 15px rgba(0, 240, 255, 0.5)',
-                fontFamily: 'var(--font-display)',
+                background: 'white',
+                color: 'var(--color-text-primary)',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                fontFamily: 'var(--font-sans)',
               }
             : { 
-                color: 'var(--color-neon-cyan)',
-                borderColor: 'transparent',
-                fontFamily: 'var(--font-display)',
+                color: 'var(--color-text-secondary)',
+                background: 'transparent',
+                fontFamily: 'var(--font-sans)',
               }
         }
       >

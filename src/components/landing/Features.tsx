@@ -45,19 +45,16 @@ const features = [
 
 const colorMap = {
   cyan: {
-    border: 'var(--color-neon-cyan)',
-    text: 'var(--color-neon-cyan)',
-    shadow: 'rgba(0, 240, 255, 0.3)',
+    iconColor: '#3b82f6',
+    bg: 'rgba(59, 130, 246, 0.1)',
   },
   pink: {
-    border: 'var(--color-neon-pink)',
-    text: 'var(--color-neon-pink)',
-    shadow: 'rgba(255, 0, 110, 0.3)',
+    iconColor: '#ec4899',
+    bg: 'rgba(236, 72, 153, 0.1)',
   },
   purple: {
-    border: 'var(--color-neon-purple)',
-    text: 'var(--color-neon-purple)',
-    shadow: 'rgba(191, 0, 255, 0.3)',
+    iconColor: '#8b5cf6',
+    bg: 'rgba(139, 92, 246, 0.1)',
   },
 };
 
@@ -74,13 +71,16 @@ export default function Features() {
           className="text-center mb-16"
         >
           <h2
-            className="text-4xl md:text-6xl font-bold uppercase tracking-wider mb-4 neon-text"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+            style={{ 
+              fontFamily: 'var(--font-display)',
+              color: 'var(--color-text-primary)',
+            }}
           >
-            Features
+            Powerful Features
           </h2>
           <p
-            className="text-lg font-bold max-w-2xl mx-auto"
+            className="text-lg max-w-2xl mx-auto"
             style={{
               color: 'var(--color-text-secondary)',
               fontFamily: 'var(--font-sans)',
@@ -107,39 +107,35 @@ export default function Features() {
                 }}
               >
                 <div
-                  className="p-6 border-3 h-full transition-all duration-300 group cursor-pointer"
+                  className="p-6 rounded-xl h-full transition-all duration-200 group cursor-pointer hover:-translate-y-1"
                   style={{
-                    background: 'var(--color-bg-secondary)',
-                    borderColor: colors.border,
-                    boxShadow: `0 0 20px ${colors.shadow}`,
+                    background: 'white',
+                    border: '1px solid #e5e7eb',
+                    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = `0 0 40px ${colors.shadow}, 4px 4px 0 rgba(0, 0, 0, 0.8)`;
+                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = `0 0 20px ${colors.shadow}`;
+                    e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
                   }}
                 >
                   {/* Icon */}
                   <div
-                    className="w-14 h-14 flex items-center justify-center border-3 mb-4"
+                    className="w-12 h-12 flex items-center justify-center rounded-lg mb-4"
                     style={{
-                      background: 'var(--color-bg-tertiary)',
-                      borderColor: colors.border,
-                      color: colors.text,
-                      boxShadow: `0 0 20px ${colors.shadow}`,
+                      background: colors.bg,
                     }}
                   >
-                    <feature.icon className="w-7 h-7" />
+                    <feature.icon className="w-6 h-6" style={{ color: colors.iconColor }} />
                   </div>
 
                   {/* Title */}
                   <h3
-                    className="text-xl font-bold uppercase tracking-wide mb-3"
+                    className="text-lg font-semibold mb-2"
                     style={{
-                      color: colors.text,
+                      color: 'var(--color-text-primary)',
                       fontFamily: 'var(--font-display)',
-                      textShadow: `0 0 10px ${colors.shadow}`,
                     }}
                   >
                     {feature.title}
@@ -147,7 +143,7 @@ export default function Features() {
 
                   {/* Description */}
                   <p
-                    className="text-sm font-bold"
+                    className="text-sm leading-relaxed"
                     style={{
                       color: 'var(--color-text-secondary)',
                       fontFamily: 'var(--font-sans)',
