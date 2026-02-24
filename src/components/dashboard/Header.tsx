@@ -24,7 +24,7 @@ export default function Header() {
           <div
             className="w-10 h-10 flex items-center justify-center rounded-lg"
             style={{
-              background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
+              background: 'var(--color-accent-primary)',
             }}
           >
             <Home className="w-5 h-5 text-white" />
@@ -72,7 +72,7 @@ export default function Header() {
                 <div
                   className="w-9 h-9 flex items-center justify-center font-semibold text-sm rounded-full"
                   style={{
-                    background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
+                    background: 'var(--color-accent-primary)',
                     color: 'white',
                     fontFamily: 'var(--font-display)',
                   }}
@@ -100,10 +100,10 @@ export default function Header() {
               onClick={() => router.push('/auth')}
               className="flex items-center gap-2 px-5 py-2.5 rounded-lg transition-all duration-200 font-semibold text-sm hover:-translate-y-0.5"
               style={{
-                background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
+                background: 'var(--color-accent-primary)',
                 color: 'white',
                 fontFamily: 'var(--font-sans)',
-                boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+                boxShadow: '0 2px 8px rgba(194, 65, 12, 0.25)',
               }}
             >
               <LogIn className="w-4 h-4" />

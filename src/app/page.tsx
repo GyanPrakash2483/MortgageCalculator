@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { SessionProvider } from 'next-auth/react';
+import LandingNav from '@/components/landing/LandingNav';
 import Hero from '@/components/landing/Hero';
 import Features from '@/components/landing/Features';
 import HowItWorks from '@/components/landing/HowItWorks';
@@ -11,11 +12,14 @@ import Footer from '@/components/dashboard/Footer';
 function LandingContent() {
   return (
     <div className="min-h-screen relative" style={{ zIndex: 2 }}>
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <CTASection />
-      <Footer />
+      <LandingNav />
+      <div className="pt-16">
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <CTASection />
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -42,8 +42,8 @@ export default function CTASection() {
           transition={{ duration: 0.6 }}
           className="p-12 md:p-20 rounded-2xl text-center relative overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))',
-            border: '1px solid rgba(59, 130, 246, 0.2)',
+            background: 'linear-gradient(135deg, rgba(194, 65, 12, 0.05), rgba(217, 119, 6, 0.05))',
+            border: '1.5px solid var(--color-border)',
           }}
         >
           {/* Decorative Corner Elements */}

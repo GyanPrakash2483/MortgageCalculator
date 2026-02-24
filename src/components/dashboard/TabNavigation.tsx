@@ -30,13 +30,14 @@ export default function TabNavigation() {
           style={
             activeTab === tab.id
               ? {
-                  background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
-                  boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+                  background: 'var(--color-accent-primary)',
+                  boxShadow: '0 2px 8px rgba(194, 65, 12, 0.25)',
                   fontFamily: 'var(--font-sans)',
                 }
               : {
                   background: 'white',
-                  border: '1px solid #e5e7eb',
+                  border: '1px solid var(--color-border)',
+                  color: 'var(--color-text-secondary)',
                   fontFamily: 'var(--font-sans)',
                 }
           }

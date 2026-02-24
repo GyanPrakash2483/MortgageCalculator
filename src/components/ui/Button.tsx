@@ -27,25 +27,31 @@ export default function Button({
       active:translate-y-0
     `,
     secondary: `
-      bg-white text-[var(--color-text-primary)]
-      border-2 border-gray-300
-      hover:border-[var(--color-accent-blue)]
-      hover:bg-gray-50
-      hover:-translate-y-0.5
-      shadow-sm hover:shadow-md
+      bg-white
+      border hover:-translate-y-0.5
     `,
     ghost: `
-      text-[var(--color-text-primary)] border-none
-      hover:bg-gray-100
+      border-none
+      hover:bg-[#fef3e2]
     `,
   };
 
   const getButtonStyle = () => {
     if (variant === 'primary') {
       return {
-        background: 'linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple))',
-        boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+        background: 'var(--color-accent-primary)',
+        boxShadow: '0 2px 8px rgba(194, 65, 12, 0.25)',
       };
+    }
+    if (variant === 'secondary') {
+      return {
+        borderColor: 'var(--color-border)',
+        color: 'var(--color-text-primary)',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+      };
+    }
+    if (variant === 'ghost') {
+      return { color: 'var(--color-text-secondary)' };
     }
     return {};
   };

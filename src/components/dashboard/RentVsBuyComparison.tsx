@@ -69,7 +69,7 @@ export default function RentVsBuyComparison({
   return (
     <GlassCard>
       <div className="flex items-center gap-2 mb-6">
-        <BarChart3 className="w-6 h-6" style={{ color: 'var(--color-accent-purple)' }} />
+        <BarChart3 className="w-6 h-6" style={{ color: 'var(--color-accent-teal)' }} />
         <h2
           className="text-2xl font-bold"
           style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
@@ -120,15 +120,15 @@ export default function RentVsBuyComparison({
             <AreaChart data={data}>
               <defs>
                 <linearGradient id="colorRent" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#a78bfa" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#a78bfa" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#c2410c" stopOpacity={0.25} />
+                  <stop offset="95%" stopColor="#c2410c" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="colorBuy" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#0e7490" stopOpacity={0.25} />
+                  <stop offset="95%" stopColor="#0e7490" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
               <XAxis
                 dataKey="year"
                 stroke="var(--color-text-tertiary)"
@@ -153,7 +153,7 @@ export default function RentVsBuyComparison({
                 type="monotone"
                 dataKey="rentCost"
                 name="Cumulative Rent"
-                stroke="#a78bfa"
+                stroke="#c2410c"
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorRent)"
@@ -162,7 +162,7 @@ export default function RentVsBuyComparison({
                 type="monotone"
                 dataKey="buyCost"
                 name="Cumulative Buy"
-                stroke="#06b6d4"
+                stroke="#0e7490"
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorBuy)"

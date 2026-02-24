@@ -66,8 +66,7 @@ export default function SliderInput({
             className="absolute top-0 left-0 h-full rounded-full transition-all duration-150"
             style={{
               width: `${percentage}%`,
-              background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
-              boxShadow: isDragging ? '0 0 12px rgba(59, 130, 246, 0.5)' : 'none',
+              background: 'linear-gradient(90deg, #c2410c, #d97706)',
             }}
           />
         </div>
@@ -101,9 +100,9 @@ export default function SliderInput({
             className="w-4 h-4 rounded-full"
             style={{
               background: 'white',
-              boxShadow: isDragging 
-                ? '0 0 0 4px rgba(59, 130, 246, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3)' 
-                : '0 0 0 2px white, 0 0 0 3px #3b82f6, 0 2px 4px rgba(0, 0, 0, 0.2)',
+              boxShadow: isDragging
+                ? '0 0 0 4px rgba(194, 65, 12, 0.2), 0 2px 8px rgba(0, 0, 0, 0.25)'
+                : '0 0 0 2px white, 0 0 0 3px #c2410c, 0 2px 4px rgba(0, 0, 0, 0.15)',
             }}
           />
         </div>

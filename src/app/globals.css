@@ -3,53 +3,49 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Typography - Neobrutalism Fonts */
+  /* Typography */
   --font-sans: 'Space Grotesk', 'Arial', sans-serif;
   --font-display: 'Space Grotesk', 'Arial Black', sans-serif;
-  
-  /* Colors - Neobrutalism Theme */
-  --color-bg-primary: #fef6e4;
+
+  /* Background - Warm Parchment */
+  --color-bg-primary: #fffaf2;
   --color-bg-secondary: #ffffff;
-  --color-bg-tertiary: #f3d2c1;
+  --color-bg-tertiary: #fef3e2;
   --color-surface: #ffffff;
-  --color-surface-hover: #f8f9fa;
-  
-  /* Modern Accent Colors */
-  --color-accent-yellow: #fbbf24;
-  --color-accent-blue: #3b82f6;
-  --color-accent-purple: #8b5cf6;
-  --color-accent-pink: #ec4899;
-  --color-accent-green: #10b981;
-  
-  /* Text */
-  --color-text-primary: #001858;
-  --color-text-secondary: #172c66;
-  --color-text-tertiary: #5a6988;
-  
-  /* Borders - Thick Black */
-  --color-border: #001858;
-  --color-border-light: #001858;
-  --color-border-cyan: #001858;
-  
+  --color-surface-hover: #fef8f0;
+
+  /* Accent Colors — Warm Amber + Deep Teal (no blue-purple) */
+  --color-accent-primary: #c2410c;   /* burnt orange — primary CTA */
+  --color-accent-teal: #0e7490;      /* deep teal — secondary */
+  --color-accent-gold: #d97706;      /* warm amber */
+  --color-accent-coral: #f97316;     /* light orange */
+  --color-accent-green: #0d9488;     /* teal-green */
+
+  /* Text — warm dark tones */
+  --color-text-primary: #1a0f00;
+  --color-text-secondary: #44291a;
+  --color-text-tertiary: #8c7355;
+
+  /* Borders — warm neutrals */
+  --color-border: #e8d5b7;
+  --color-border-light: #f3e8d0;
+
   /* Status */
-  --color-success: #06ffa5;
-  --color-error: #ff006e;
-  --color-warning: #f9dc5c;
-  --color-info: #3772ff;
-  
-  /* Border Radius - Sharp */
-  --radius-xs: 0px;
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  
-  /* Shadows - Minimal Offset */
-  --shadow-brutal: 3px 3px 0 #001858;
-  --shadow-brutal-hover: 4px 4px 0 #001858;
-  --shadow-brutal-sm: 2px 2px 0 #001858;
-  --shadow-brutal-lg: 5px 5px 0 #001858;
-  --shadow-card: 3px 3px 0 #001858;
+  --color-success: #0d9488;
+  --color-error: #dc2626;
+  --color-warning: #d97706;
+  --color-info: #0e7490;
+
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 @layer base {
@@ -87,16 +83,16 @@
 @layer components {
   .glass-card {
     background: var(--color-surface);
-    border: 2px solid var(--color-border);
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
     position: relative;
     padding: 2rem;
     transition: all 0.2s ease;
   }
 
   .glass-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .gradient-text {
@@ -105,33 +101,34 @@
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple));
+    background: var(--color-accent-primary);
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-weight: 600;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.01em;
     transition: all 0.2s ease;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 2px 8px rgba(194, 65, 12, 0.25);
     font-family: var(--font-display);
   }
 
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    background: #a83509;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(194, 65, 12, 0.35);
   }
 
   .btn-primary:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 1px 4px rgba(194, 65, 12, 0.2);
   }
 
-  /* Modern Input Styles */
+  /* Input Styles */
   .retro-input {
     background: var(--color-surface);
-    border: 2px solid #e5e7eb;
+    border: 1.5px solid var(--color-border);
     color: var(--color-text-primary);
     font-family: var(--font-sans);
     font-weight: 400;
@@ -142,21 +139,21 @@
 
   .retro-input:focus {
     outline: none;
-    border-color: var(--color-accent-blue);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: var(--color-accent-teal);
+    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
   }
 
   /* Accent Text Colors */
   .neon-text {
-    color: var(--color-accent-blue);
+    color: var(--color-accent-primary);
   }
 
   .neon-pink {
-    color: var(--color-accent-pink);
+    color: var(--color-accent-coral);
   }
 
   .neon-purple {
-    color: var(--color-accent-purple);
+    color: var(--color-accent-teal);
   }
 
   /* Minimal Scrollbar */

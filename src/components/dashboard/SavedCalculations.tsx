@@ -134,8 +134,8 @@ export default function SavedCalculations() {
   return (
     <GlassCard>
       <h2
-        className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
-        style={{ fontFamily: 'var(--font-display)' }}
+        className="text-2xl font-bold tracking-tight mb-6"
+        style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
       >
         Saved Calculations ({calculations.length})
       </h2>
@@ -151,31 +151,32 @@ export default function SavedCalculations() {
               transition={{ duration: 0.2 }}
             >
               <div
-                className="p-4 border-3 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 cursor-pointer group shadow-[2px_2px_0_rgba(0,0,0,0.5)]"
+                className="p-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 cursor-pointer group"
                 style={{
-                  background: 'var(--color-bg-secondary)',
-                  borderColor: 'var(--color-neon-purple)',
+                  background: 'white',
+                  border: '1.5px solid var(--color-border)',
+                  boxShadow: 'var(--shadow-card)',
                 }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}
                 onClick={() => handleLoad(calc)}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div
-                      className="w-8 h-8 flex items-center justify-center border-2"
+                      className="w-9 h-9 flex items-center justify-center rounded-lg"
                       style={{
-                        background: 'var(--color-bg-tertiary)',
-                        borderColor: 'var(--color-neon-cyan)',
-                        color: 'var(--color-neon-cyan)',
-                        boxShadow: '0 0 10px rgba(0, 240, 255, 0.3)',
+                        background: 'rgba(14, 116, 144, 0.1)',
+                        color: 'var(--color-accent-teal)',
                       }}
                     >
                       {getIcon(calc.type)}
                     </div>
                     <div>
-                      <h3 className="font-bold text-sm uppercase tracking-wide" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
+                      <h3 className="font-semibold text-sm" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>
                         {getTypeLabel(calc.type)}
                       </h3>
-                      <p className="text-xs font-bold" style={{ color: 'var(--color-neon-purple)', fontFamily: 'var(--font-sans)' }}>
+                      <p className="text-xs" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}>
                         {calc.currency}
                       </p>
                     </div>
@@ -184,13 +185,10 @@ export default function SavedCalculations() {
                   <div className="flex items-center gap-1">
                     {loadingId === calc._id.toString() && (
                       <div
-                        className="px-2 py-1 text-xs font-bold uppercase border-2"
-                        style={{ 
-                          background: 'rgba(0, 240, 255, 0.1)',
-                          color: 'var(--color-neon-cyan)',
-                          borderColor: 'var(--color-neon-cyan)',
-                          fontFamily: 'var(--font-display)',
-                          boxShadow: '0 0 10px rgba(0, 240, 255, 0.3)',
+                        className="px-2 py-1 text-xs font-semibold rounded-md"
+                        style={{
+                          background: 'rgba(13, 148, 136, 0.1)',
+                          color: 'var(--color-accent-green)',
                         }}
                       >
                         Loaded
@@ -202,11 +200,10 @@ export default function SavedCalculations() {
                         handleDelete(calc._id.toString());
                       }}
                       disabled={deletingId === calc._id.toString()}
-                      className="p-2 border-2 transition-all duration-200 opacity-0 group-hover:opacity-100 hover:-translate-x-0.5 hover:-translate-y-0.5"
+                      className="p-1.5 rounded-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
                       style={{
                         color: 'var(--color-error)',
-                        borderColor: 'var(--color-error)',
-                        background: 'var(--color-bg-tertiary)',
+                        background: 'rgba(220, 38, 38, 0.08)',
                       }}
                     >
                       <Trash2 className="w-4 h-4" />
@@ -221,7 +218,7 @@ export default function SavedCalculations() {
                         <p className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}>
                           Monthly Payment
                         </p>
-                        <p className="text-lg font-bold neon-pink" style={{ fontFamily: 'var(--font-sans)' }}>
+                      <p className="text-lg font-bold" style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-accent-primary)' }}>
                           {formatCurrency((calc.results.monthlyPayment as number) || 0, calc.currency, true)}
                         </p>
                       </div>
@@ -251,7 +248,7 @@ export default function SavedCalculations() {
                       <p className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
                         Monthly Rent
                       </p>
-                      <p className="text-lg font-bold neon-pink" style={{ fontFamily: 'var(--font-sans)' }}>
+                      <p className="text-lg font-bold" style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-accent-primary)' }}>
                         {formatCurrency((calc.results.monthlyRent as number) || 0, calc.currency, true)}
                       </p>
                     </div>
@@ -262,23 +259,23 @@ export default function SavedCalculations() {
                       <p className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
                         Prorated Amount
                       </p>
-                      <p className="text-lg font-bold neon-pink" style={{ fontFamily: 'var(--font-sans)' }}>
+                      <p className="text-lg font-bold" style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-accent-primary)' }}>
                         {formatCurrency((calc.results.proratedRent as number) || 0, calc.currency, true)}
                       </p>
                     </div>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between mt-3 pt-3 border-t-2" style={{ borderColor: 'var(--color-neon-purple)' }}>
+                <div className="flex items-center justify-between mt-3 pt-3 border-t" style={{ borderColor: 'var(--color-border-light)' }}>
                   <div className="flex items-center gap-1">
                     <Clock className="w-3 h-3" style={{ color: 'var(--color-text-tertiary)' }} />
-                    <span className="text-xs font-bold" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}>
+                    <span className="text-xs" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}>
                       {format(new Date(calc.createdAt), 'MMM d, yyyy')}
                     </span>
                   </div>
                   <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Upload className="w-3 h-3" style={{ color: 'var(--color-neon-cyan)' }} />
-                    <span className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
+                    <Upload className="w-3 h-3" style={{ color: 'var(--color-accent-teal)' }} />
+                    <span className="text-xs font-semibold" style={{ color: 'var(--color-accent-teal)', fontFamily: 'var(--font-sans)' }}>
                       Load
                     </span>
                   </div>

@@ -45,16 +45,16 @@ const features = [
 
 const colorMap = {
   cyan: {
-    iconColor: '#3b82f6',
-    bg: 'rgba(59, 130, 246, 0.1)',
+    iconColor: '#0e7490',
+    bg: 'rgba(14, 116, 144, 0.1)',
   },
   pink: {
-    iconColor: '#ec4899',
-    bg: 'rgba(236, 72, 153, 0.1)',
+    iconColor: '#c2410c',
+    bg: 'rgba(194, 65, 12, 0.1)',
   },
   purple: {
-    iconColor: '#8b5cf6',
-    bg: 'rgba(139, 92, 246, 0.1)',
+    iconColor: '#d97706',
+    bg: 'rgba(217, 119, 6, 0.1)',
   },
 };
 
@@ -110,14 +110,16 @@ export default function Features() {
                   className="p-6 rounded-xl h-full transition-all duration-200 group cursor-pointer hover:-translate-y-1"
                   style={{
                     background: 'white',
-                    border: '1px solid #e5e7eb',
-                    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                    border: '1.5px solid var(--color-border)',
+                    boxShadow: 'var(--shadow-card)',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.08)';
+                    e.currentTarget.style.borderColor = 'var(--color-border)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-card)';
+                    e.currentTarget.style.borderColor = 'var(--color-border)';
                   }}
                 >
                   {/* Icon */}

@@ -110,42 +110,28 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
         <AreaChart data={data}>
           <defs>
             <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.05} />
+              <stop offset="5%" stopColor="#0e7490" stopOpacity={0.25} />
+              <stop offset="95%" stopColor="#0e7490" stopOpacity={0.02} />
             </linearGradient>
           </defs>
-          <CartesianGrid 
-            strokeDasharray="3 3" 
-            stroke="#e5e7eb" 
-            strokeWidth={1}
-          />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeWidth={1} />
           <XAxis
             dataKey="year"
-            stroke="#9ca3af"
-            tick={{ 
-              fill: 'var(--color-text-tertiary)', 
-              fontSize: 12,
-              fontWeight: '500',
-              fontFamily: 'var(--font-sans)',
-            }}
-            axisLine={{ stroke: '#e5e7eb', strokeWidth: 1 }}
+            stroke="var(--color-border)"
+            tick={{ fill: 'var(--color-text-tertiary)', fontSize: 12, fontFamily: 'var(--font-sans)' }}
+            axisLine={{ stroke: 'var(--color-border)', strokeWidth: 1 }}
           />
           <YAxis
-            stroke="#9ca3af"
-            tick={{ 
-              fill: 'var(--color-text-tertiary)', 
-              fontSize: 12,
-              fontWeight: '500',
-              fontFamily: 'var(--font-sans)',
-            }}
-            axisLine={{ stroke: '#e5e7eb', strokeWidth: 1 }}
+            stroke="var(--color-border)"
+            tick={{ fill: 'var(--color-text-tertiary)', fontSize: 12, fontFamily: 'var(--font-sans)' }}
+            axisLine={{ stroke: 'var(--color-border)', strokeWidth: 1 }}
             tickFormatter={(value) => formatCurrency(value, currency)}
           />
           <Tooltip content={<CustomTooltip />} />
           <Area
             type="monotone"
             dataKey="balance"
-            stroke="#3b82f6"
+            stroke="#0e7490"
             strokeWidth={2}
             fillOpacity={1}
             fill="url(#colorBalance)"

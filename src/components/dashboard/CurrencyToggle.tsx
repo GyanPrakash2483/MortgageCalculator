@@ -8,7 +8,7 @@ export default function CurrencyToggle() {
   const { currency, setCurrency } = useCalculatorStore();
 
   return (
-    <div className="flex gap-2 p-1 rounded-lg" style={{ background: '#f3f4f6' }}>
+    <div className="flex gap-2 p-1 rounded-lg" style={{ background: 'var(--color-bg-tertiary)' }}>
       <button
         onClick={() => setCurrency('USD')}
         className="flex items-center gap-2 px-3 py-2 font-semibold text-sm rounded-md transition-all duration-200"
@@ -16,12 +16,12 @@ export default function CurrencyToggle() {
           currency === 'USD'
             ? {
                 background: 'white',
-                color: 'var(--color-text-primary)',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                color: 'var(--color-accent-primary)',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                 fontFamily: 'var(--font-sans)',
               }
-            : { 
-                color: 'var(--color-text-secondary)',
+            : {
+                color: 'var(--color-text-tertiary)',
                 background: 'transparent',
                 fontFamily: 'var(--font-sans)',
               }
@@ -37,12 +37,12 @@ export default function CurrencyToggle() {
           currency === 'INR'
             ? {
                 background: 'white',
-                color: 'var(--color-text-primary)',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                color: 'var(--color-accent-primary)',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                 fontFamily: 'var(--font-sans)',
               }
-            : { 
-                color: 'var(--color-text-secondary)',
+            : {
+                color: 'var(--color-text-tertiary)',
                 background: 'transparent',
                 fontFamily: 'var(--font-sans)',
               }

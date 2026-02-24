@@ -49,8 +49,8 @@ function AuthContent() {
             <div
               className="w-14 h-14 flex items-center justify-center rounded-lg"
               style={{
-                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
-                boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+                background: 'var(--color-accent-primary)',
+                boxShadow: '0 4px 12px rgba(194, 65, 12, 0.25)',
               }}
             >
               <Home className="w-7 h-7 text-white" />
@@ -78,7 +78,7 @@ function AuthContent() {
 
         <GlassCard>
           {/* Tabs */}
-          <div className="flex gap-2 mb-6 p-1 rounded-lg" style={{ background: '#f3f4f6' }}>
+          <div className="flex gap-2 mb-6 p-1 rounded-lg" style={{ background: 'var(--color-bg-tertiary)' }}>
             <button
               onClick={() => setIsSignUp(false)}
               className={`flex-1 py-2.5 px-4 font-semibold text-sm rounded-md transition-all duration-200`}
@@ -151,7 +151,7 @@ function AuthContent() {
           <button
             onClick={() => setIsSignUp(!isSignUp)}
             className="font-semibold hover:underline transition-colors"
-            style={{ color: 'var(--color-accent-blue)' }}
+            style={{ color: 'var(--color-accent-primary)' }}
           >
             {isSignUp ? 'Sign In' : 'Sign Up'}
           </button>

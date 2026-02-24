@@ -27,7 +27,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 md:py-32 relative">
+    <section id="how-it-works" className="py-20 md:py-32 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -71,24 +71,24 @@ export default function HowItWorks() {
                 className="p-8 rounded-xl text-center hover:-translate-y-1 transition-all duration-200"
                 style={{
                   background: 'white',
-                  border: '1px solid #e5e7eb',
-                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                  border: '1.5px solid var(--color-border)',
+                  boxShadow: 'var(--shadow-card)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.08)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-card)';
                 }}
               >
                 {/* Icon */}
                 <div
                   className="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-lg"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1))',
+                    background: 'rgba(14, 116, 144, 0.1)',
                   }}
                 >
-                  <step.icon className="w-8 h-8" style={{ color: '#3b82f6' }} />
+                  <step.icon className="w-8 h-8" style={{ color: '#0e7490' }} />
                 </div>
 
                 {/* Title */}

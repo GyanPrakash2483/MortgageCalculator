@@ -84,8 +84,8 @@ export default function MortgageCalculator() {
         {/* Input Panel */}
         <GlassCard>
           <h2
-            className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="text-2xl font-bold tracking-tight mb-6"
+            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
           >
             Mortgage Inputs
           </h2>
@@ -139,15 +139,12 @@ export default function MortgageCalculator() {
 
           {saveMessage && (
             <p
-              className="text-sm text-center mt-2 font-bold uppercase tracking-wide border-2 px-3 py-2"
+              className="text-sm text-center mt-2 font-medium rounded-lg px-3 py-2 border"
               style={{ 
-                color: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
-                borderColor: saveMessage.includes('✓') ? 'var(--color-neon-green)' : 'var(--color-error)',
-                background: saveMessage.includes('✓') ? 'rgba(57, 255, 20, 0.1)' : 'rgba(255, 0, 110, 0.1)',
-                fontFamily: 'var(--font-display)',
-                textShadow: saveMessage.includes('✓') 
-                  ? '0 0 10px rgba(57, 255, 20, 0.6)' 
-                  : '0 0 10px rgba(255, 0, 110, 0.6)',
+                color: saveMessage.includes('✓') ? 'var(--color-accent-green)' : 'var(--color-error)',
+                borderColor: saveMessage.includes('✓') ? '#a7f3d0' : '#fecaca',
+                background: saveMessage.includes('✓') ? '#f0fdf4' : '#fef2f2',
+                fontFamily: 'var(--font-sans)',
               }}
             >
               {saveMessage}
@@ -158,68 +155,51 @@ export default function MortgageCalculator() {
         {/* Results Panel */}
         <GlassCard>
           <h2
-            className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="text-2xl font-bold tracking-tight mb-6"
+            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
           >
             Monthly Payment
           </h2>
 
           <div
-            className="text-5xl font-bold mb-8 neon-pink"
-            style={{ fontFamily: 'var(--font-sans)' }}
+            className="text-5xl font-bold mb-8"
+            style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-accent-primary)' }}
           >
             {formatCurrency(results.monthlyPayment, currency, true)}
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
-                Loan Amount
-              </p>
-              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
-                {formatCurrency(loanAmount, currency)}
-              </p>
-            </div>
-            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
-                Down Payment
-              </p>
-              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
-                {formatCurrency(debouncedInputs.downPayment, currency)}
-              </p>
-            </div>
-            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
-                Total Payment
-              </p>
-              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
-                {formatCurrency(results.totalPayment, currency)}
-              </p>
-            </div>
-            <div className="p-3 border-3" style={{ background: 'var(--color-bg-secondary)', borderColor: 'var(--color-neon-purple)' }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
-                Total Interest
-              </p>
-              <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
-                {formatCurrency(results.totalInterest, currency)}
-              </p>
-            </div>
+            {[
+              { label: 'Loan Amount', value: formatCurrency(loanAmount, currency) },
+              { label: 'Down Payment', value: formatCurrency(debouncedInputs.downPayment, currency) },
+              { label: 'Total Payment', value: formatCurrency(results.totalPayment, currency) },
+              { label: 'Total Interest', value: formatCurrency(results.totalInterest, currency) },
+            ].map(({ label, value }) => (
+              <div key={label} className="p-3 rounded-lg" style={{ background: 'var(--color-bg-tertiary)', border: '1px solid var(--color-border-light)' }}>
+                <p className="text-xs font-medium mb-1" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}>
+                  {label}
+                </p>
+                <p className="text-xl font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-sans)' }}>
+                  {value}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* Charts */}
           <div className="space-y-6 mt-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <PieChartIcon className="w-5 h-5" style={{ color: 'var(--color-neon-cyan)' }} />
-                <h3 className="font-bold uppercase tracking-wide text-sm" style={{ color: 'var(--color-neon-cyan)', fontFamily: 'var(--font-display)' }}>
+                <PieChartIcon className="w-5 h-5" style={{ color: 'var(--color-accent-teal)' }} />
+                <h3 className="font-semibold text-sm" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>
                   Principal vs Interest
                 </h3>
               </div>
               <FinancialChart
                 type="donut"
                 data={[
-                  { name: 'Principal', value: loanAmount, fill: '#3b82f6' },
-                  { name: 'Interest', value: results.totalInterest, fill: '#ec4899' },
+                  { name: 'Principal', value: loanAmount, fill: '#0e7490' },
+                  { name: 'Interest', value: results.totalInterest, fill: '#c2410c' },
                 ]}
                 currency={currency}
               />
@@ -227,8 +207,8 @@ export default function MortgageCalculator() {
 
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <AreaChartIcon className="w-5 h-5" style={{ color: 'var(--color-neon-pink)' }} />
-                <h3 className="font-bold uppercase tracking-wide text-sm" style={{ color: 'var(--color-neon-pink)', fontFamily: 'var(--font-display)' }}>
+                <AreaChartIcon className="w-5 h-5" style={{ color: 'var(--color-accent-primary)' }} />
+                <h3 className="font-semibold text-sm" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>
                   Loan Balance Over Time
                 </h3>
               </div>
@@ -241,8 +221,8 @@ export default function MortgageCalculator() {
       {/* Amortization Table */}
       <GlassCard>
         <h2
-          className="text-2xl font-bold uppercase tracking-wider mb-6 neon-text"
-          style={{ fontFamily: 'var(--font-display)' }}
+          className="text-2xl font-bold tracking-tight mb-6"
+          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}
         >
           Year-by-Year Breakdown
         </h2>
