@@ -45,9 +45,9 @@ export default function SignUpForm() {
 
   if (success) {
     return (
-      <div className="flex flex-col items-center gap-4 py-8 text-center rounded-lg p-6 border" style={{ borderColor: '#86efac', background: '#f0fdf4' }}>
+      <div className="flex flex-col items-center gap-4 py-8 text-center p-6 border" style={{ borderColor: '#86efac', background: '#f0fdf4' }}>
         <div
-          className="w-16 h-16 flex items-center justify-center rounded-lg"
+          className="w-16 h-16 flex items-center justify-center"
           style={{
             background: 'rgba(34, 197, 94, 0.1)',
           }}
@@ -104,7 +104,7 @@ export default function SignUpForm() {
 
       {error && (
         <div
-          className="p-3 rounded-lg text-sm font-medium border"
+          className="p-3 text-sm font-medium border"
           style={{
             background: '#fef2f2',
             borderColor: '#fecaca',

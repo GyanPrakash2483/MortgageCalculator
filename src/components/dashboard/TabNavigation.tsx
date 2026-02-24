@@ -19,8 +19,8 @@ export default function TabNavigation() {
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
-          className={`
-            flex items-center gap-2 px-6 py-3 font-semibold text-sm rounded-lg
+            className={`
+            flex items-center gap-2 px-6 py-3 font-semibold text-sm
             transition-all duration-200 whitespace-nowrap
             ${activeTab === tab.id 
               ? 'text-white' 

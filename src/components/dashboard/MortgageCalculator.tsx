@@ -175,7 +175,7 @@ export default function MortgageCalculator() {
               { label: 'Total Payment', value: formatCurrency(results.totalPayment, currency) },
               { label: 'Total Interest', value: formatCurrency(results.totalInterest, currency) },
             ].map(({ label, value }) => (
-              <div key={label} className="p-3 rounded-lg" style={{ background: 'var(--color-bg-tertiary)', border: '1px solid var(--color-border-light)' }}>
+              <div key={label} className="p-3" style={{ background: 'var(--color-bg-tertiary)', border: '1px solid var(--color-border-light)' }}>
                 <p className="text-xs font-medium mb-1" style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}>
                   {label}
                 </p>

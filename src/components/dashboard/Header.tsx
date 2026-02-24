@@ -22,7 +22,7 @@ export default function Header() {
           className="flex items-center gap-3 transition-opacity hover:opacity-80"
         >
           <div
-            className="w-10 h-10 flex items-center justify-center rounded-lg"
+            className="w-10 h-10 flex items-center justify-center"
             style={{
               background: 'var(--color-accent-primary)',
             }}
@@ -83,7 +83,7 @@ export default function Header() {
               )}
               <button
                 onClick={() => signOut({ callbackUrl: '/' })}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm border hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-4 py-2 transition-all duration-200 font-medium text-sm border hover:-translate-y-0.5"
                 style={{
                   background: 'white',
                   borderColor: '#e5e7eb',
@@ -98,7 +98,7 @@ export default function Header() {
           ) : (
             <button
               onClick={() => router.push('/auth')}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-lg transition-all duration-200 font-semibold text-sm hover:-translate-y-0.5"
+              className="flex items-center gap-2 px-5 py-2.5 transition-all duration-200 font-semibold text-sm hover:-translate-y-0.5"
               style={{
                 background: 'var(--color-accent-primary)',
                 color: 'white',

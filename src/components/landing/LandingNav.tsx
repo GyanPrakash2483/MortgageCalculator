@@ -49,7 +49,7 @@ export default function LandingNav() {
               className="flex items-center gap-3 transition-opacity hover:opacity-80"
             >
               <div
-                className="w-9 h-9 flex items-center justify-center rounded-lg"
+                className="w-9 h-9 flex items-center justify-center"
                 style={{ background: 'var(--color-accent-primary)' }}
               >
                 <Home className="w-4 h-4 text-white" />
@@ -67,8 +67,8 @@ export default function LandingNav() {
               {navLinks.map((link) => (
                 <button
                   key={link.label}
-                  onClick={() => scrollTo(link.href)}
-                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+              onClick={() => scrollTo(link.href)}
+                  className="px-4 py-2 text-sm font-medium transition-all duration-200"
                   style={{ color: 'var(--color-text-secondary)', fontFamily: 'var(--font-sans)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = 'var(--color-text-primary)';
@@ -102,7 +102,7 @@ export default function LandingNav() {
                   )}
                   <button
                     onClick={() => router.push('/calculator')}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
                     style={{
                       background: 'var(--color-accent-primary)',
                       boxShadow: '0 2px 8px rgba(194, 65, 12, 0.25)',
@@ -117,7 +117,7 @@ export default function LandingNav() {
                 <>
                   <button
                     onClick={() => router.push('/auth')}
-                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+                    className="px-4 py-2 text-sm font-medium transition-all duration-200"
                     style={{
                       color: 'var(--color-text-secondary)',
                       fontFamily: 'var(--font-sans)',
@@ -135,7 +135,7 @@ export default function LandingNav() {
                   </button>
                   <button
                     onClick={() => router.push('/calculator')}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
                     style={{
                       background: 'var(--color-accent-primary)',
                       boxShadow: '0 2px 8px rgba(194, 65, 12, 0.25)',
@@ -150,7 +150,7 @@ export default function LandingNav() {
 
             {/* Mobile Menu Toggle */}
             <button
-              className="md:hidden p-2 rounded-lg transition-colors"
+              className="md:hidden p-2 transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
               style={{ color: 'var(--color-text-primary)', background: 'var(--color-bg-tertiary)' }}
               aria-label="Toggle menu"
@@ -181,7 +181,7 @@ export default function LandingNav() {
                 <button
                   key={link.label}
                   onClick={() => scrollTo(link.href)}
-                  className="text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors"
+                  className="text-left px-4 py-3 text-sm font-medium transition-colors"
                   style={{
                     color: 'var(--color-text-secondary)',
                     fontFamily: 'var(--font-sans)',
@@ -196,7 +196,7 @@ export default function LandingNav() {
                 {session ? (
                   <button
                     onClick={() => { setMenuOpen(false); router.push('/calculator'); }}
-                    className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold text-white"
+                    className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white"
                     style={{ background: 'var(--color-accent-primary)', fontFamily: 'var(--font-sans)' }}
                   >
                     <Calculator className="w-4 h-4" />
@@ -206,7 +206,7 @@ export default function LandingNav() {
                   <>
                     <button
                       onClick={() => { setMenuOpen(false); router.push('/auth'); }}
-                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium border"
+                      className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium border"
                       style={{
                         color: 'var(--color-text-primary)',
                         borderColor: 'var(--color-border)',
@@ -218,7 +218,7 @@ export default function LandingNav() {
                     </button>
                     <button
                       onClick={() => { setMenuOpen(false); router.push('/calculator'); }}
-                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold text-white"
+                      className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white"
                       style={{ background: 'var(--color-accent-primary)', fontFamily: 'var(--font-sans)' }}
                     >
                       Get Started

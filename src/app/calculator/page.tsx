@@ -17,32 +17,33 @@ function CalculatorContent() {
 
   return (
     <div
-      className="min-h-screen p-4 sm:p-6 lg:p-8 relative"
+      className="min-h-screen relative"
       style={{ zIndex: 2 }}
     >
+      <div className="p-4 sm:p-6 lg:p-8">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <Header />
+          <TabNavigation />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <Header />
-        <TabNavigation />
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {activeTab === 'mortgage' && <MortgageCalculator />}
+            {activeTab === 'rent' && <RentCalculator />}
+            {activeTab === 'prorated_rent' && <ProratedRentCalculator />}
+          </motion.div>
 
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          {activeTab === 'mortgage' && <MortgageCalculator />}
-          {activeTab === 'rent' && <RentCalculator />}
-          {activeTab === 'prorated_rent' && <ProratedRentCalculator />}
-        </motion.div>
-
-        <div className="mt-8">
-          <SavedCalculations />
+          <div className="mt-8">
+            <SavedCalculations />
+          </div>
         </div>
-
-        <Footer />
       </div>
+
+      <Footer />
     </div>
   );
 }

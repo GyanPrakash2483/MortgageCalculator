@@ -107,7 +107,7 @@ export default function Features() {
                 }}
               >
                 <div
-                  className="p-6 rounded-xl h-full transition-all duration-200 group cursor-pointer hover:-translate-y-1"
+                  className="p-6 h-full transition-all duration-200 group cursor-pointer hover:-translate-y-1"
                   style={{
                     background: 'white',
                     border: '1.5px solid var(--color-border)',
@@ -124,7 +124,7 @@ export default function Features() {
                 >
                   {/* Icon */}
                   <div
-                    className="w-12 h-12 flex items-center justify-center rounded-lg mb-4"
+                    className="w-12 h-12 flex items-center justify-center mb-4"
                     style={{
                       background: colors.bg,
                     }}

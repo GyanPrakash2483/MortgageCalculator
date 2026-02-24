@@ -35,7 +35,7 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
     if (active && payload && payload.length) {
       return (
         <div
-          className="p-3 rounded-lg border"
+          className="p-3 border"
           style={{
             background: 'white',
             borderColor: '#e5e7eb',
@@ -45,7 +45,7 @@ export default function FinancialChart({ type, data, currency }: FinancialChartP
           {payload.map((entry, index: number) => (
             <div key={index} className="flex items-center gap-2">
               <div
-                className="w-3 h-3 rounded-sm"
+                className="w-3 h-3"
                 style={{ 
                   background: entry.color,
                 }}

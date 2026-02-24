@@ -43,7 +43,7 @@ export default function Input({ label, error, icon, className = '', ...props }: 
       </div>
       {error && (
         <div
-          className="text-xs font-medium px-3 py-2 rounded-md"
+          className="text-xs font-medium px-3 py-2"
           style={{ 
             color: '#dc2626',
             background: '#fef2f2',

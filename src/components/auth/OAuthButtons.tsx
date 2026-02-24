@@ -13,7 +13,7 @@ export default function OAuthButtons() {
     <div className="flex flex-col gap-3">
       <button
         onClick={handleGoogleSignIn}
-        className="w-full flex items-center justify-center gap-3 px-6 py-3 font-medium text-sm rounded-lg transition-all duration-200 border hover:-translate-y-0.5"
+        className="w-full flex items-center justify-center gap-3 px-6 py-3 font-medium text-sm transition-all duration-200 border hover:-translate-y-0.5"
         style={{
           background: 'white',
           borderColor: '#e5e7eb',

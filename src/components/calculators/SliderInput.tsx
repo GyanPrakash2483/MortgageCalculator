@@ -56,14 +56,14 @@ export default function SliderInput({
       <div className="relative py-2">
         {/* Track Background */}
         <div 
-          className="h-1.5 rounded-full relative"
+          className="h-1.5 relative"
           style={{
             background: '#e5e7eb',
           }}
         >
           {/* Progress Fill */}
           <div
-            className="absolute top-0 left-0 h-full rounded-full transition-all duration-150"
+            className="absolute top-0 left-0 h-full transition-all duration-150"
             style={{
               width: `${percentage}%`,
               background: 'linear-gradient(90deg, #c2410c, #d97706)',

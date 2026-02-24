@@ -8,10 +8,10 @@ export default function CurrencyToggle() {
   const { currency, setCurrency } = useCalculatorStore();
 
   return (
-    <div className="flex gap-2 p-1 rounded-lg" style={{ background: 'var(--color-bg-tertiary)' }}>
+    <div className="flex gap-2 p-1" style={{ background: 'var(--color-bg-tertiary)', border: '1px solid var(--color-border)' }}>
       <button
         onClick={() => setCurrency('USD')}
-        className="flex items-center gap-2 px-3 py-2 font-semibold text-sm rounded-md transition-all duration-200"
+        className="flex items-center gap-2 px-3 py-2 font-semibold text-sm transition-all duration-200"
         style={
           currency === 'USD'
             ? {
@@ -32,7 +32,7 @@ export default function CurrencyToggle() {
       </button>
       <button
         onClick={() => setCurrency('INR')}
-        className="flex items-center gap-2 px-3 py-2 font-semibold text-sm rounded-md transition-all duration-200"
+        className="flex items-center gap-2 px-3 py-2 font-semibold text-sm transition-all duration-200"
         style={
           currency === 'INR'
             ? {

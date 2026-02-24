@@ -68,7 +68,7 @@ export default function HowItWorks() {
               transition={{ delay: index * 0.15, duration: 0.5 }}
             >
               <div
-                className="p-8 rounded-xl text-center hover:-translate-y-1 transition-all duration-200"
+                className="p-8 text-center hover:-translate-y-1 transition-all duration-200"
                 style={{
                   background: 'white',
                   border: '1.5px solid var(--color-border)',
@@ -83,7 +83,7 @@ export default function HowItWorks() {
               >
                 {/* Icon */}
                 <div
-                  className="w-16 h-16 flex items-center justify-center mx-auto mb-6 rounded-lg"
+                  className="w-16 h-16 flex items-center justify-center mx-auto mb-6"
                   style={{
                     background: 'rgba(14, 116, 144, 0.1)',
                   }}

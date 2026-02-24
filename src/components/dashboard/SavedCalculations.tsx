@@ -151,7 +151,7 @@ export default function SavedCalculations() {
               transition={{ duration: 0.2 }}
             >
               <div
-                className="p-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 cursor-pointer group"
+                className="p-4 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer group"
                 style={{
                   background: 'white',
                   border: '1.5px solid var(--color-border)',
@@ -164,7 +164,7 @@ export default function SavedCalculations() {
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div
-                      className="w-9 h-9 flex items-center justify-center rounded-lg"
+                      className="w-9 h-9 flex items-center justify-center"
                       style={{
                         background: 'rgba(14, 116, 144, 0.1)',
                         color: 'var(--color-accent-teal)',
@@ -185,7 +185,7 @@ export default function SavedCalculations() {
                   <div className="flex items-center gap-1">
                     {loadingId === calc._id.toString() && (
                       <div
-                        className="px-2 py-1 text-xs font-semibold rounded-md"
+                        className="px-2 py-1 text-xs font-semibold"
                         style={{
                           background: 'rgba(13, 148, 136, 0.1)',
                           color: 'var(--color-accent-green)',
@@ -200,7 +200,7 @@ export default function SavedCalculations() {
                         handleDelete(calc._id.toString());
                       }}
                       disabled={deletingId === calc._id.toString()}
-                      className="p-1.5 rounded-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+                      className="p-1.5 transition-all duration-200 opacity-0 group-hover:opacity-100"
                       style={{
                         color: 'var(--color-error)',
                         background: 'rgba(220, 38, 38, 0.08)',

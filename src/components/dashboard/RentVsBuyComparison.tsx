@@ -101,7 +101,7 @@ export default function RentVsBuyComparison({
           />
 
           <div
-            className="p-4 rounded-lg"
+            className="p-4"
             style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
           >
             <p className="text-sm mb-2" style={{ color: 'var(--color-text-secondary)' }}>

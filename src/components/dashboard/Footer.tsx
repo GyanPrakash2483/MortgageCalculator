@@ -4,13 +4,13 @@ import React from 'react';
 import { Github, Twitter, Linkedin, Heart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function Footer() {
+export default function Footer({ className = 'mt-16 border-t py-12' }: { className?: string }) {
   const router = useRouter();
   const currentYear = new Date().getFullYear();
 
   return (
     <footer
-      className="mt-16 border-t py-12"
+      className={className}
       style={{
         borderColor: '#e5e7eb',
         background: 'var(--color-bg-secondary)',
@@ -107,7 +107,7 @@ export default function Footer() {
               ].map((social) => (
                 <button
                   key={social.label}
-                  className="w-9 h-9 flex items-center justify-center rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                  className="w-9 h-9 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
                   style={{
                     background: '#f3f4f6',
                     color: 'var(--color-text-primary)',

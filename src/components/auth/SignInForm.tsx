@@ -64,7 +64,7 @@ export default function SignInForm() {
 
       {error && (
         <div
-          className="p-3 rounded-lg text-sm font-medium border"
+          className="p-3 text-sm font-medium border"
           style={{
             background: '#fef2f2',
             borderColor: '#fecaca',
