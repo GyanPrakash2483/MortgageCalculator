@@ -7,6 +7,7 @@ import Hero from '@/components/landing/Hero';
 import Features from '@/components/landing/Features';
 import HowItWorks from '@/components/landing/HowItWorks';
 import CTASection from '@/components/landing/CTASection';
+import FAQSection from '@/components/landing/FAQSection';
 import Footer from '@/components/dashboard/Footer';
 
 function LandingContent() {
@@ -17,6 +18,7 @@ function LandingContent() {
         <Hero />
         <Features />
         <HowItWorks />
+        <FAQSection />
         <CTASection />
         <Footer />
       </div>
